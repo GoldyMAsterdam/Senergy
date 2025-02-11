@@ -28,11 +28,18 @@ header>h1{
 
 main{
     display: flex;
-    justify-items: center;
+    height: calc(100% - 12rem);
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-main>p{
+main>h2{
     padding-left: 2rem;
     font-size: 2rem;
+}
+
+main>section#dataDisplay{
+    height: 48rem;
+    width: 100%;
 }
