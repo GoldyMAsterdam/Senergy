@@ -43,3 +43,9 @@ main>section#dataDisplay{
     height: 48rem;
     width: 100%;
 }
+
+nav{
+    visibility: hidden;
+    
+    font-size: 10rem;
+}
