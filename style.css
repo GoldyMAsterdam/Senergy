@@ -31,7 +31,16 @@ header{
 header > h1 {
     font-size: 3rem;
     user-select: none;
+    margin-bottom: 5rem;
+    margin-left: 2.3rem;
+    margin-top: -2rem;
+}
+
+header > img {
+    width: 12rem;
+    height: 12rem;
     margin-bottom: 2rem;
+    margin-left: 3rem;
 }
 
 header > ul {
@@ -45,6 +54,7 @@ header > ul > li {
     font-size: 1.6rem;
     cursor: pointer;
     user-select: none;
+    display: flex;
 }
 
 header > ul > li > a {
