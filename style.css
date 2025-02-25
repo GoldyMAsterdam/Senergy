@@ -4,35 +4,39 @@
     margin: 0;
     padding: 0;
 }
-html,body{
-    font-size: 62.5%;
-}
 
 html,body{
     height: 100%;
     font-family: "Poppins", sans-serif;
+    font-size: 62.5%;
 }
 
+body {
+    background: #060c1a;
+}
 header{
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: #0e1421;
     color: white;
     position: fixed;
     left: 0;
     top: 0;
-    height: 100%;
-    width: 20rem;
+    height: 90%;
+    width: 15rem;
     padding: 2rem;
     justify-content: flex-start;
     align-items: flex-start;
+    border-radius: 1.6rem;
+    margin-left: 4rem;
 }
 
 header > h1 {
     font-size: 3rem;
     user-select: none;
     margin-bottom: 5rem;
-    margin-left: 2.3rem;
+    margin-left: 1.5rem;
     margin-top: -2rem;
 }
 
@@ -40,7 +44,7 @@ header > img {
     width: 12rem;
     height: 12rem;
     margin-bottom: 2rem;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
     user-select: none;
 }
 
@@ -49,7 +53,7 @@ header > ul {
     padding: 0;
     width: 100%;
     margin-top: 3rem;
-    margin-left: 7rem;
+    margin-left: 5.2rem;
 }
 
 header > ul > li {
@@ -61,7 +65,7 @@ header > ul > li {
 }
 
 header > ul > li > a {
-    color: white;
+    color: #676b73;
     text-decoration: none;
     margin-bottom: 10rem;
 }
@@ -76,9 +80,10 @@ main{
 }
 
 main > h2 {
-    padding-left: 2rem;
+    padding: 2rem;
     font-size: 2rem;
-    user-select: none;
+    user-select: none;  
+    border: 1px solid black;
 }
 
 main > section#dataDisplay {
