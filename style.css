@@ -1,11 +1,11 @@
 /* Dashboard */
 
-*, *::before, *::after{
+*, *::before, *::after {
     margin: 0;
     padding: 0;
 }
 
-html,body{
+html, body {
     height: 100%;
     font-family: "Poppins", sans-serif;
     font-size: 62.5%;
@@ -14,7 +14,8 @@ html,body{
 body {
     background: #060c1a;
 }
-header{
+
+header {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -70,7 +71,7 @@ header > ul > li > a {
     margin-bottom: 10rem;
 }
 
-main{
+main {
     margin-left: 22rem; 
     display: flex;
     height: calc(100% - 12rem);
@@ -91,6 +92,7 @@ main > section#dataDisplay {
     width: 100%;
 }
 
+
 footer {
     font-size: 1.2rem;
     background-color: black;
@@ -105,7 +107,13 @@ footer {
     align-items: center;
 }
 
-/* Live Time */
+
+nav {
+    visibility: hidden;
+    font-size: 10rem;
+}
+
+
 .container h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
