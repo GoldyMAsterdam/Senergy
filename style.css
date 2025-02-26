@@ -92,7 +92,6 @@ main > section#dataDisplay {
     width: 100%;
 }
 
-<<<<<<< HEAD
 
 footer {
     font-size: 1.2rem;
@@ -114,25 +113,15 @@ nav {
     font-size: 10rem;
 }
 
-
-=======
-<<<<<<< HEAD
 nav{
     visibility: hidden;
-    
     font-size: 10rem;
-=======
-/* Live Time */
->>>>>>> 79591454350bac60cbbb0aa193a952bab27776b8
-.container h1 {
+}
+
+    .container h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
     font-weight: 500;
     margin-top: -35rem;
     user-select: none;
-<<<<<<< HEAD
 }
-=======
->>>>>>> e67bc472355a43aa07b613c5782b4ba3c4385f5e
-}
->>>>>>> 79591454350bac60cbbb0aa193a952bab27776b8
