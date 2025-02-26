@@ -1,0 +1,43 @@
+services:
+    php:
+      image: wodby/php:latest
+      container_name: php
+      volumes: 
+        - './:/var/www/html'
+
+    nginx: 
+      image: nginx:latest
+      container_name: nginx
+      ports:
+        - 80:80
+      links:
+        - php
+      volumes:
+        - './:/var/www/html'
+        - './docker:/etc/nginx/conf.d'
+      depends_on:
+        - php
+        - mariadb
+
+    mariadb:
+      image: mariadb:latest
+      container_name: mariadb
+      volumes:
+        - './:/var/www/html'
+      environment:
+        MYSQL_DATABASE: '${DB_NAME}'
+        MYSQL_USER: '${DB_USERNAME}'
+        MYSQL_PASSWORD: '${DB_PASSWORD}'
+        MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASSWORD}'
+
+    phpmyadmin:
+      image: phpmyadmin:latest
+      container_name: phpmyadmin
+      ports:
+       - 88:80
+      depends_on:
+        - mariadb
+      environment:
+        PMA_HOST: '${DB_HOST}'
+        PMA_USER: '${DB_USERNAME}'
+        PMA_PASSWORD: '${DB_PASSWORD}'
