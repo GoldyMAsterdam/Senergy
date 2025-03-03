@@ -106,8 +106,8 @@ header > ul > li > a > span {
 
 header > ul > li > a > svg {
     fill: #676b73;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     flex-shrink: 0;
     margin-bottom: 1.5rem;
     transition: var(--transition);
