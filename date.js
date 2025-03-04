@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateTime() {
         const now = new Date();
-        const options = { 
-            weekday: 'long', 
+        const options = {
             year: 'numeric', 
             month: 'long', 
             day: 'numeric',
