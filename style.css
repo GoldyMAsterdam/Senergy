@@ -58,7 +58,7 @@ header > h1 {
     font-weight: 600;
     text-align: center;
     margin-bottom: 4rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3rem;
 }
 
 header > ul {
@@ -152,12 +152,15 @@ main {
     transition: var(--transition);
 }
 
-main > h2 {
+main > div > #current-time {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+main > div > h2 {
     font-size: 2.7rem;
     font-weight: 600;
     margin-bottom: 2.5rem;
     color: var(--text-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 1rem;
 }
 
@@ -172,12 +175,54 @@ main > section#dataDisplay {
     margin-bottom: 3rem;
 }
 
+
+/* Buiten Temp grid*/
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 5rem;
     margin-bottom: 3rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 40%;
 }
+
+.dashboard-grid > div > button {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 2.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.dashboard-grid > div > h1 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.dashboard-grid > div > h2 {
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.dashboard-grid > div > h3 {
+    font-size: 5rem;
+    font-weight: 400;
+}
+
+.dashboard-grid > div > h4 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-left: 2rem;
+}
+
+/* End Buiten Temp Grid */
 
 .dashboard-card {
     background-color: rgba(255, 255, 255, 0.05);
