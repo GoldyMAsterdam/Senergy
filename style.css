@@ -174,29 +174,73 @@ main > section#dataDisplay {
     box-shadow: var(--shadow);
     margin-bottom: 3rem;
 }
+/* End Main */
 
-
-/* Buiten Temp grid*/
+/* Buiten Temp grid */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 5rem;
     margin-bottom: 3rem;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--sidebar-bg);   
     border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 3rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    width: 40%;
+    width: 100%;
+    max-width: 55rem; 
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    user-select: none;
+}
+
+.container > hr{
+    opacity: 20%;
+    width: 49%;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    content: "";
+    display: block;
+}
+
+.dashboard-grid > .container > img {
+    position: absolute;
+    top: 8rem;
+    right: 52%;
+    width: 20rem;
+    height: 20rem;
+    max-width: 35%;
+    object-fit: contain;
+    margin: 1rem;
+}
+
+.dashboard-grid > .container > button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dashboard-grid > .container > button > img {
+    margin-bottom: 0.3rem;
+    fill: white;
+    width: 2rem;
+    height: 2rem;
+}
+.dashboard-grid > .container > button > span {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-left: 0.3rem;
+}
 .dashboard-grid > div > button {
     background-color: var(--accent);
     color: var(--text-primary);
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border: none;
     border-radius: var(--border-radius);
-    font-size: 2.4rem;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
@@ -207,11 +251,14 @@ main > section#dataDisplay {
 }
 
 .dashboard-grid > div > h2 {
+    margin-bottom: 1rem;
     font-size: 4rem;
     font-weight: 500;
 }
 
 .dashboard-grid > div > h3 {
+    margin-left: 0.5rem;
+    margin-bottom: -0.3rem;
     font-size: 5rem;
     font-weight: 400;
 }
@@ -219,10 +266,76 @@ main > section#dataDisplay {
 .dashboard-grid > div > h4 {
     font-size: 2rem;
     font-weight: 400;
-    margin-left: 2rem;
+    margin-left: 2.5rem;
+    margin-bottom: 3rem;
+} 
+
+#weather-condition {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-top: -8rem;
+    margin-left: 29rem;
 }
 
-/* End Buiten Temp Grid */
+
+/* Dropdown celsius / fahrenheit */
+.temp-unit-selector {
+    display: inline-block;
+    margin-bottom: 2rem;
+    position: absolute;
+    top: 7rem;
+    right: 90rem;
+    z-index: 100;
+}
+
+#temp-unit-toggle {
+    background-color: var(--accent);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#temp-unit-toggle:hover {
+    background-color: rgba(58, 134, 255, 0.8);
+}
+
+#temp-unit-dropdown {
+    margin-right: -20rem;
+    display: none;
+    background-color: var(--sidebar-bg);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    z-index: 1;
+    max-width: 15rem;
+    bottom: 100%;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+#temp-unit-dropdown.show {
+    display: block;
+}
+
+#temp-unit-dropdown a {
+    color: var(--text-primary);
+    padding: 1.2rem 1.6rem;
+    text-decoration: none;
+    display: block;
+    font-size: 1.4rem;
+    transition: var(--transition);
+}
+
+#temp-unit-dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* End Dropdown celsius / fahrenheit */
+
+/* -- End Buiten Temp Grid -- */
 
 .dashboard-card {
     background-color: rgba(255, 255, 255, 0.05);
@@ -302,5 +415,9 @@ footer {
     
     main {
         padding: 2rem 1.5rem;
+    }
+    .dashboard-grid > .container > img {
+        width: 8rem;
+        height: 8rem;
     }
 }
