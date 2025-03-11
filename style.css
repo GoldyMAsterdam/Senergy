@@ -54,6 +54,7 @@ header > img {
 }
 
 header > h1 {
+    user-select: none;
     font-size: 2.7rem;
     font-weight: 600;
     text-align: center;
@@ -177,7 +178,7 @@ main > section#dataDisplay {
 /* End Main */
 
 /* Buiten Temp grid */
-.dashboard-grid {
+.buitentemperatuur-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 5rem;
@@ -207,7 +208,7 @@ main > section#dataDisplay {
     display: block;
 }
 
-.dashboard-grid > .container > img {
+.buitentemperatuur-grid > .container > img {
     position: absolute;
     top: 8rem;
     right: 52%;
@@ -218,24 +219,24 @@ main > section#dataDisplay {
     margin: 1rem;
 }
 
-.dashboard-grid > .container > button {
+.buitentemperatuur-grid > .container > button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.dashboard-grid > .container > button > img {
+.buitentemperatuur-grid > .container > button > img {
     margin-bottom: 0.3rem;
     fill: white;
     width: 2rem;
     height: 2rem;
 }
-.dashboard-grid > .container > button > span {
+.buitentemperatuur-grid > .container > button > span {
     font-size: 2.2rem;
     font-weight: 500;
     margin-left: 0.3rem;
 }
-.dashboard-grid > div > button {
+.buitentemperatuur-grid > div > button {
     background-color: var(--accent);
     color: var(--text-primary);
     padding: 1rem 1.5rem;
@@ -245,25 +246,25 @@ main > section#dataDisplay {
     cursor: pointer;
     transition: var(--transition);
 }
-.dashboard-grid > div > h1 {
+.buitentemperatuur-grid > div > h1 {
     font-size: 2rem;
     font-weight: 400;
 }
 
-.dashboard-grid > div > h2 {
+.buitentemperatuur-grid > div > h2 {
     margin-bottom: 1rem;
     font-size: 4rem;
     font-weight: 500;
 }
 
-.dashboard-grid > div > h3 {
+.buitentemperatuur-grid > div > h3 {
     margin-left: 0.5rem;
     margin-bottom: -0.3rem;
     font-size: 5rem;
     font-weight: 400;
 }
 
-.dashboard-grid > div > h4 {
+.buitentemperatuur-grid > div > h4 {
     font-size: 2rem;
     font-weight: 400;
     margin-left: 2.5rem;
@@ -337,6 +338,53 @@ main > section#dataDisplay {
 
 /* -- End Buiten Temp Grid -- */
 
+/* Begin Weerverwachting Grid */
+.weerverwachting-grid {
+    background-color: var(--sidebar-bg);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 38%;
+    margin-bottom: 3rem;
+    display: grid;
+    margin-top: -35rem;
+    margin-left: 80rem;
+    height: 80rem;
+}
+.Next-hour {
+    display: flex;
+    background-color: rgba(103, 107, 115, 0.3);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 25rem;
+}
+.Next-hour > h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    opacity: 50%;
+}
+.Next-hour > svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: 0.55rem;
+}
+.Next-hour > div {
+    position: absolute;
+    background-color: rgba(103, 107, 115, 0.2);
+    border-radius: var(--border-radius);
+    width: 45rem;
+    height: 17rem;
+    margin-top: 4rem;
+}
+
+/* End Weerverwachting Grid */
+
+
+/* Voor eventueel weersverwachting, etc */
 .dashboard-card {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius);
@@ -399,7 +447,7 @@ footer {
         width: 100%;
     }
     
-    .dashboard-grid {
+    .buitentemperatuur-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -416,7 +464,7 @@ footer {
     main {
         padding: 2rem 1.5rem;
     }
-    .dashboard-grid > .container > img {
+    .buitentemperatuur-grid > .container > img {
         width: 8rem;
         height: 8rem;
     }
