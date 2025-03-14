@@ -419,27 +419,38 @@ main > section#dataDisplay {
     /* background-color: rgba(58, 134, 255, 0.1); */
 }
 
-.dashboard-card h3 {
-    font-size: 1.4rem;
+.dashboard-card > h3 {
+    font-size: 1.5rem;
     margin-bottom: 0.8rem;
     color: var(--text-secondary);
 }
 
-.dashboard-card p {
-    font-size: 1.8rem;
+.dashboard-card > p {
+    font-size: 1.3rem;
     font-weight: 500;
     color: var(--text-primary);
 }
 
-.dashboard-card .icon {
-    margin-bottom: 1rem;
-    font-size: 2.4rem;
-    color: var(--accent);
+::-webkit-scrollbar {
+    width: 1.2rem;
+    background-color: black;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: var(--border-radius);
+    background-color: var(--sidebar-bg);
+    border: 3px solid var(--sidebar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--border-radius);
+    background-color: var(--accent);
+    border: 3px solid var(--sidebar-bg);
 }
 
 /* Komende week */
 .Next-week {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     background-color: rgba(103, 107, 115, 0.3);
     border-radius: var(--border-radius);
@@ -451,12 +462,20 @@ main > section#dataDisplay {
     overflow-y: auto;
 }
 
+.Next-week > h1 > svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: -0.3rem;
+    margin-left: -3rem;
+}
+
 .Next-week > h1 {
     font-size: 2.4rem;
     font-weight: 500;
     margin-left: 0.5rem;
     opacity: 50%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
 }
 
 .dashboard-week {
@@ -468,14 +487,16 @@ main > section#dataDisplay {
 
 .dashboard-cardweek {
     background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 1.2rem;
+    border-radius: var(--border-radius);
     padding: 1.6rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     min-height: 5rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
 }
 
 .dashboard-cardweek:hover {
@@ -484,6 +505,18 @@ main > section#dataDisplay {
     background-color: rgba(58, 134, 255, 0.1);
     border-left: 3px solid var(--accent);
 }
+
+.dashboard-cardweek > img {
+    margin-left: 1rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.dashboard-cardweek > p {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+}
+
 /* End Weerverwachting Grid */
 
 footer {

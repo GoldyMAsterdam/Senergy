@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close dropdown when clicking elsewhere on the page
     document.addEventListener('click', function(e) {
         if (tempUnitDropdown && tempUnitDropdown.classList.contains('show')) {
             if (!tempUnitToggle.contains(e.target) && !tempUnitDropdown.contains(e.target)) {
@@ -66,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Function to update temperature display based on selected unit
     function updateTemperatureDisplay(unit) {
         const temperatureElement = document.querySelector('main h3');
         const feelsLikeElement = document.querySelector('main h4');
@@ -89,12 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Weather API call
     const apiKey = '601eeb12fe614d3ca94162605250503';
     const city = 'Amsterdam';
     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
     
-    let weatherData = null; // Store weather data globally for unit conversion
+    let weatherData = null;
     
     fetch(url)
     .then(response => response.json())
