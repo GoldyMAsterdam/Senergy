@@ -175,6 +175,23 @@ main > section#dataDisplay {
     box-shadow: var(--shadow);
     margin-bottom: 3rem;
 }
+
+::-webkit-scrollbar {
+    width: 1.2rem;
+    background-color: black;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: var(--border-radius);
+    background-color: var(--sidebar-bg);
+    border: 3px solid var(--sidebar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--border-radius);
+    background-color: var(--accent);
+    border: 3px solid var(--sidebar-bg);
+}
 /* End Main */
 
 /* Buiten Temp grid */
@@ -345,13 +362,15 @@ main > section#dataDisplay {
     padding: 3rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    width: 38%;
+    width: 41%;
     margin-bottom: 3rem;
     display: grid;
     margin-top: -35rem;
-    margin-left: 80rem;
+    margin-left: 76rem;
     height: 80rem;
 }
+
+/* Komend uur */
 .Next-hour {
     display: flex;
     background-color: rgba(103, 107, 115, 0.3);
@@ -361,48 +380,198 @@ main > section#dataDisplay {
     transition: var(--transition);
     height: 25rem;
 }
+
 .Next-hour > h1 {
     font-size: 2.4rem;
     font-weight: 500;
     margin-left: 0.5rem;
     opacity: 50%;
 }
+
 .Next-hour > svg {
     width: 2.4rem;
     height: 2.4rem;
     margin-top: 0.55rem;
 }
+
 .Next-hour > div {
     position: absolute;
     background-color: rgba(103, 107, 115, 0.2);
     border-radius: var(--border-radius);
-    width: 45rem;
+    width: 49rem;
     height: 17rem;
     margin-top: 4rem;
 }
 
-/* End Weerverwachting Grid */
-
-
-/* Voor eventueel weersverwachting, etc */
 .dashboard-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dashboard-container {
+    display: flex;  
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.dashboard-container > div > img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-0.7rem);
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    border-bottom: 0.3rem solid var(--accent);
+}
+
+.dashboard-card > h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.dashboard-card > p {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Komende week */
+.Next-week {
+    display: flex; 
+    flex-direction: column;
+    background-color: rgba(103, 107, 115, 0.3);
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    height: 47rem;
+    margin-top: 2rem;
+    overflow-y: auto;
 }
 
-.dashboard-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+.Next-week > h1 > svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: -0.3rem;
+    margin-left: -3rem;
 }
 
-.dashboard-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+.Next-week > h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    opacity: 50%;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+}
+
+.dashboard-week {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.dashboard-cardweek {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 1.6rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    min-height: 5rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 4rem 5rem 3rem 12rem 15rem;
+    align-items: center;
+    position: relative;
+}
+
+.dashboard-cardweek:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.2);
+    background-color: rgba(58, 134, 255, 0.1);
+    border-left: 3px solid var(--accent);
+} 
+
+
+.dashboard-cardweek > img {
+    margin-left: 5rem;
+    margin-top: -0.6rem;
+    width: 3rem;
+    height: 3rem;
+    justify-self: center;
+}
+
+.dashboard-cardweek > h3 {
+    margin-left: 2rem;
+    margin-top: -0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    justify-self: start;
+}
+
+.dashboard-cardweek > h4 {
+    margin-top: -1rem;
+    margin-left: 10rem;
+    font-size: 1.3rem;
+    font-weight: 500;
     color: var(--text-primary);
+    justify-self: center;
 }
+
+.dashboard-cardweek > p {
+    margin-top: -1rem;
+    font-size: 1.3rem;
+    margin-left: 48rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    justify-self: center;
+}
+
+.background {
+    position: absolute;
+    margin-left: 0;
+    border-radius: var(--border-radius);
+    background: var(--text-muted);
+    border: none;
+    left: 20rem;
+    width: 20rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+.tempslider {
+    position: absolute;
+    margin-left: 0;
+    border-radius: var(--border-radius);
+    background: linear-gradient(45deg, #A0E8FF, #7FD189, #E6A15D);
+    border: none;
+    left: 20rem;
+    width: 10rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+/* End Weerverwachting Grid */
 
 footer {
     font-size: 1.4rem;
