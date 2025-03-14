@@ -499,10 +499,10 @@ main > section#dataDisplay {
     transition: var(--transition);
     min-height: 5rem;
     margin-top: 1rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: 4rem 5rem 3rem 12rem 15rem;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
+    position: relative;
 }
 
 .dashboard-cardweek:hover {
@@ -510,37 +510,67 @@ main > section#dataDisplay {
     box-shadow: 0 4px 12px rgba(58, 134, 255, 0.2);
     background-color: rgba(58, 134, 255, 0.1);
     border-left: 3px solid var(--accent);
-}
+} 
 
-.Sunny {
-    margin-right: 4rem;
-}
 
 .dashboard-cardweek > img {
+    margin-left: 5rem;
+    margin-top: -0.6rem;
     width: 3rem;
     height: 3rem;
+    justify-self: center;
 }
 
 .dashboard-cardweek > h3 {
-    font-size: 1.3rem;
     margin-left: 2rem;
+    margin-top: -0.5rem;
+    font-size: 1.5rem;
     font-weight: 600;
+    justify-self: start;
 }
 
 .dashboard-cardweek > h4 {
+    margin-top: -1rem;
+    margin-left: 10rem;
     font-size: 1.3rem;
-    margin-right: 12rem;
     font-weight: 500;
     color: var(--text-primary);
+    justify-self: center;
 }
 
 .dashboard-cardweek > p {
+    margin-top: -1rem;
     font-size: 1.3rem;
-    /* margin-left: 6rem; */
+    margin-left: 48rem;
     font-weight: 500;
     color: var(--text-primary);
+    justify-self: center;
 }
 
+.background {
+    position: absolute;
+    margin-left: 0;
+    border-radius: var(--border-radius);
+    background: var(--text-muted);
+    border: none;
+    left: 20rem;
+    width: 20rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+.tempslider {
+    position: absolute;
+    margin-left: 0;
+    border-radius: var(--border-radius);
+    background: linear-gradient(45deg, #A0E8FF, #7FD189, #E6A15D);
+    border: none;
+    left: 20rem;
+    width: 10rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%); 
+}
 /* End Weerverwachting Grid */
 
 footer {
