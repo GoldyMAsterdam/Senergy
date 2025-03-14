@@ -501,7 +501,7 @@ main > section#dataDisplay {
     margin-top: 1rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 1.5rem;
 }
 
@@ -512,15 +512,33 @@ main > section#dataDisplay {
     border-left: 3px solid var(--accent);
 }
 
+.Sunny {
+    margin-right: 4rem;
+}
+
 .dashboard-cardweek > img {
-    margin-left: 1rem;
     width: 3rem;
     height: 3rem;
 }
 
+.dashboard-cardweek > h3 {
+    font-size: 1.3rem;
+    margin-left: 2rem;
+    font-weight: 600;
+}
+
+.dashboard-cardweek > h4 {
+    font-size: 1.3rem;
+    margin-right: 12rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
 .dashboard-cardweek > p {
     font-size: 1.3rem;
-    margin-left: 1rem;
+    /* margin-left: 6rem; */
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
 /* End Weerverwachting Grid */
