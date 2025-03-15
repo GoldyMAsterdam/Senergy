@@ -196,17 +196,19 @@ main > section#dataDisplay {
 
 /* Buiten Temp grid */
 .buitentemperatuur-grid {
+    position: relative;
+    top: 3rem;
+    margin-left: 4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 5rem;
-    margin-bottom: 3rem;
     background-color: var(--sidebar-bg);   
     border-radius: var(--border-radius);
     padding: 3rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    width: 100%;
-    max-width: 55rem; 
+    width: 45%;
+    height: 35rem;
 }
 
 .container {
@@ -214,6 +216,7 @@ main > section#dataDisplay {
     flex-direction: column;
     align-items: flex-start;
     user-select: none;
+    margin-top: 1rem;
 }
 
 .container > hr{
@@ -227,8 +230,8 @@ main > section#dataDisplay {
 
 .buitentemperatuur-grid > .container > img {
     position: absolute;
-    top: 8rem;
-    right: 52%;
+    top: 5rem;
+    right: 10%;
     width: 20rem;
     height: 20rem;
     max-width: 35%;
@@ -291,18 +294,186 @@ main > section#dataDisplay {
 #weather-condition {
     font-size: 3rem;
     font-weight: 500;
-    margin-top: -8rem;
-    margin-left: 29rem;
+    margin-top: -6rem;
+    margin-left: 35rem;
+}
+/* Einde Buiten Temperatuur */
+
+/* Begin Zonsopkomst */
+.zonsopkomst-grid {
+    background-color: var(--sidebar-bg);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 45%;
+    display: grid;
+    margin-top: -42rem;
+    margin-left: 4rem;
+    height: 36.8rem;
 }
 
+.container3 { 
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: 1rem;
+    grid-auto-rows: minmax(15rem, auto);
+    grid-template-areas: 
+    "WindSpeed Humidity Sunrise"
+    "Rainfall UV-Index Sunset";
+}
+
+.dashboardcard-WindSpeed {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 15rem;
+    grid-area: WindSpeed;
+}
+
+.dashboardcard-WindSpeed > h1 {
+    margin-left: 3rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.dashboardcard-WindSpeed > svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}
+
+.dashboardcard-Humidity {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 15rem;
+    grid-area: Humidity;
+}
+
+.dashboardcard-Humidity > h1 {
+    margin-left: 3rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.Humidity-drop { /* Rain drop SVG */
+    position: absolute;   
+    margin-left: 1rem;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.7rem;
+    font-weight: 500;
+    color: var(--text-primary);   
+}
+
+.Humidity { /* Wave-ish Svg */
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}
+
+.dashboardcard-Rainfall {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 15rem;
+    grid-area: Rainfall;
+}
+
+.dashboardcard-Rainfall > h1 {
+    margin-left: 3rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.dashboardcard-Rainfall > svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}
+
+.dashboardcard-UV-Index {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 15rem;
+    grid-area: UV-Index;
+}
+
+.dashboardcard-UV-Index > h1 {
+    margin-left: 3rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.dashboardcard-UV-Index > svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}
+
+.dashboardcard-Sunrise {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 25rem;
+    grid-area: Sunrise;
+}
+
+.dashboardcard-Sunrise > h1 {
+    margin-top: 2rem;
+    margin-left: 7rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.dashboardcard-Sunrise > svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}
+
+.dashboardcard-Sunset {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 25rem;
+    grid-area: Sunset;
+}
+
+.dashboardcard-Sunset > h1 {
+    margin-top: 2rem;
+    margin-left: 7rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.dashboardcard-Sunset > svg {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}
 
 /* Dropdown celsius / fahrenheit */
 .temp-unit-selector {
     display: inline-block;
     margin-bottom: 2rem;
     position: absolute;
-    top: 7rem;
-    right: 90rem;
+    top: 4rem;
+    right: 5rem;
     z-index: 100;
 }
 
