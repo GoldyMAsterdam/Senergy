@@ -341,6 +341,7 @@ main > section#dataDisplay {
 .dashboardcard-UV-Index:hover, .dashboardcard-Sunrise:hover, .dashboardcard-Sunset:hover {
     transform: scale(1.03);
     box-shadow: 0 0 20px rgba(58, 134, 255, 0.8),  0 0 40px rgba(58, 134, 255, 0.6), 0 0 60px rgba(58, 134, 255, 0.4);
+    box-sizing: border-box;
 }
 
 @property --angle{
@@ -362,9 +363,14 @@ main > section#dataDisplay {
     right: -4px;
     bottom: -4px;
     z-index: 1;
-    border-radius: calc(var(--border-radius) + 3px);
     background-image: conic-gradient(from var(--angle), transparent 75%, var(--accent-color));
     animation: spin 3s infinite linear;
+}
+
+.dashboardcard-WindSpeed:hover::before, .dashboardcard-Humidity:hover::before, .dashboardcard-Rainfall:hover::before,
+.dashboardcard-UV-Index:hover::before, .dashboardcard-Sunrise:hover::before, .dashboardcard-Sunset:hover::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;    
 }
 
 @keyframes spin {
@@ -439,8 +445,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h1 {
-    text-align: right;
-    margin-right: 1rem;
+    text-align: center;
+    margin-left: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
 }
@@ -464,9 +470,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h2 {
-    position: absolute;
-    text-align: right;
-    margin-left: 5.5rem;
+    text-align: center;
     font-size: 2.1rem;
     font-weight: 600;
     margin-top: 1.5rem;
@@ -474,9 +478,9 @@ main > section#dataDisplay {
 
 .dashboardcard-Humidity > p {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin-top: 5.25rem;
+    margin-top: 1.5rem;
 }
 
 .dashboardcard-Rainfall {
@@ -516,7 +520,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h1 {
-    text-align: right;
+    text-align: center;
     margin-right: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
@@ -530,8 +534,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h2 {
-    text-align: right;
-    margin-right: 1rem;
+    text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1.5rem;
@@ -551,7 +554,7 @@ main > section#dataDisplay {
 
 .dashboardcard-Sunrise > h1 {
     text-align: right;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     margin-right: 5.2rem;
     font-size: 1.8rem;
     font-weight: 500;
@@ -559,8 +562,8 @@ main > section#dataDisplay {
 
 .dashboardcard-Sunrise > img {
     position: absolute;
-    margin-left: -0.5rem;
-    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-top: 1.5rem;
     width: 7.5rem;
     height: 7.5rem;
 }
@@ -581,15 +584,15 @@ main > section#dataDisplay {
 .dashboardcard-Sunset > h1 {
     text-align: right;
     margin-right: 5.2rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
 
 .dashboardcard-Sunset > img {
     position: absolute;
-    margin-top: 1rem;
-    margin-left: -0.5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
     width: 7.5rem;
     height: 7.5rem;
 }
@@ -598,7 +601,6 @@ main > section#dataDisplay {
     text-align: right;
     margin-right: 1.9rem;
     letter-spacing: 0.2rem;
-    margin-top: 0.5rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
