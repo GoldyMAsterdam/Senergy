@@ -42,10 +42,12 @@
         <!-- Buiten temperatuur -->
         <article class="buitentemperatuur-grid">
             <div class="container">
-                <button>
+                <button id="location-picker-btn" class="location-btn">
                     <img src="IMG/image.png">
-                    <span>Amsterdam</span>
+                    <span id="selected-Location">Amsterdam</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
+
                 <h2 id="location-day">Monday</h2>
                 <h1 id="current-time"></h1>
                 <hr></hr>  
@@ -126,5 +128,40 @@
     <footer>
         <p>Website gemaakt door: Tycho en Younes</p>
     </footer>
+    <div id="location-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Select Location</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <input type="text" id="location-search" placeholder="Search for a city...">
+                </div>
+                <div class="location-list">
+                    <div class="location-item" data-location="Amsterdam">
+                        <img src="IMG/image.png" alt="Amsterdam">
+                        <span>Amsterdam</span>
+                    </div>
+                    <div class="location-item" data-location="Rotterdam">
+                        <img src="IMG/image.png" alt="Rotterdam">
+                        <span>Rotterdam</span>
+                    </div>
+                    <div class="location-item" data-location="Utrecht">
+                        <img src="IMG/image.png" alt="Utrecht">
+                        <span>Utrecht</span>
+                    </div>
+                    <div class="location-item" data-location="Eindhoven">
+                        <img src="IMG/image.png" alt="Eindhoven">
+                        <span>Eindhoven</span>
+                    </div>
+                    <div class="location-item" data-location="Groningen">
+                        <img src="IMG/image.png" alt="Groningen">
+                        <span>Groningen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
