@@ -324,10 +324,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-WindSpeed {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
     transition: var(--transition);
     width: 15rem;
     grid-area: WindSpeed;
@@ -367,10 +367,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
     transition: var(--transition);
     width: 15rem;
     grid-area: Humidity;
@@ -415,10 +415,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Rainfall {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
     transition: var(--transition);
     width: 15rem;
     grid-area: Rainfall;
@@ -451,10 +451,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
     transition: var(--transition);
     width: 15rem;
     grid-area: UV-Index;
@@ -487,10 +487,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Sunrise {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
     transition: var(--transition);
     width: 25rem;
     grid-area: Sunrise;
@@ -520,10 +520,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Sunset {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--shadow);
     transition: var(--transition);
     width: 25rem;
     grid-area: Sunset;
