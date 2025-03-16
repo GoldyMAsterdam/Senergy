@@ -289,13 +289,15 @@ main > section#dataDisplay {
     font-weight: 400;
     margin-left: 2.5rem;
     margin-bottom: 3rem;
-} 
+}
 
 #weather-condition {
+    text-align: right;
+    width: 100%;
     font-size: 3rem;
     font-weight: 500;
     margin-top: -6rem;
-    margin-left: 35rem;
+    margin-left: -4rem;
 }
 /* Einde Buiten Temperatuur */
 
@@ -322,24 +324,80 @@ main > section#dataDisplay {
     grid-template-areas: 
     "WindSpeed Humidity Sunrise"
     "Rainfall UV-Index Sunset";
+    position: relative;
 }
 
-.dashboardcard-WindSpeed {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
+.dashboardcard-WindSpeed, .dashboardcard-Humidity, .dashboardcard-Rainfall,
+.dashboardcard-UV-Index, .dashboardcard-Sunrise, .dashboardcard-Sunset {
+    position: relative;
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 1.5rem;
-    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
-    border: 0.5rem solid transparent;
-    width: 15rem;
-    grid-area: WindSpeed;
+    transition: transform 0.3s ease;
+    z-index: 1;
 }
 
-.dashboardcard-WindSpeed:hover {
+.dashboardcard-WindSpeed:hover, .dashboardcard-Humidity:hover, .dashboardcard-Rainfall:hover,
+.dashboardcard-UV-Index:hover, .dashboardcard-Sunrise:hover, .dashboardcard-Sunset:hover {
     transform: scale(1.03);
-    transition: var(--transition);
-    border: 0.5rem solid var(--accent);
-    padding: 1.5rem;
+    box-shadow: 0 0 20px rgba(58, 134, 255, 0.8),  0 0 40px rgba(58, 134, 255, 0.6), 0 0 60px rgba(58, 134, 255, 0.4);
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.dashboardcard-WindSpeed:hover::before, .dashboardcard-Humidity:hover::before, .dashboardcard-Rainfall:hover::before,
+.dashboardcard-UV-Index:hover::before, .dashboardcard-Sunrise:hover::before, .dashboardcard-Sunset:hover::before, .dashboardcard-WindSpeed:hover::after, 
+.dashboardcard-Humidity:hover,.dashboardcard-Rainfall:hover::after, .dashboardcard-UV-Index:hover::after, .dashboardcard-Sunrise:hover::after, 
+.dashboardcard-Sunset:hover::after {
+    content: '';
+    position: absolute;
+    width: 105%;
+    height: 105%;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    z-index: 1;
+    border-radius: calc(var(--border-radius) + 3px);
+    background-image: conic-gradient(from var(--angle), transparent 75%, var(--accent-color));
+    animation: spin 3s infinite linear;
+}
+
+@keyframes spin {
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+
+.dashboardcard-WindSpeed::before {
+    color: var(--accent);
+}
+.dashboardcard-Humidity::before {
+    color: var(--accent);
+}
+.dashboardcard-Rainfall::before {
+    color: var(--accent);
+}
+.dashboardcard-UV-Index::before {
+    color: var(--accent);
+}
+.dashboardcard-Sunrise::before {
+    color: var(--accent);
+}
+.dashboardcard-Sunset::before {
+    color: var(--accent);
+}
+
+.dashboardcard-WindSpeed {
+    width: 15rem;
+    grid-area: WindSpeed;
 }
 
 .dashboardcard-WindSpeed > h1 {
@@ -376,21 +434,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
-    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: Humidity;
-}
-
-.dashboardcard-Humidity:hover {
-    transform: scale(1.03);
-    transition: var(--transition);
-    border: 0.5rem solid var(--accent);
-    padding: 1.5rem;
 }
 
 .dashboardcard-Humidity > h1 {
@@ -435,21 +480,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Rainfall {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
-    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: Rainfall;
-}
-
-.dashboardcard-Rainfall:hover {
-    transform: scale(1.03);
-    transition: var(--transition);
-    border: 0.5rem solid var(--accent);
-    padding: 1.5rem;
 }
 
 .dashboardcard-Rainfall > h1 {
@@ -479,21 +511,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
-    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: UV-Index;
-}
-
-.dashboardcard-UV-Index:hover {
-    transform: scale(1.03);
-    transition: var(--transition);
-    border: 0.5rem solid var(--accent);
-    padding: 1.5rem;
 }
 
 .dashboardcard-UV-Index > h1 {
@@ -526,21 +545,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Sunrise {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
-    border: 0.5rem solid transparent;
     width: 25rem;
     grid-area: Sunrise;
-}
-
-.dashboardcard-Sunrise:hover {
-    transform: scale(1.03);
-    transition: var(--transition);
-    border: 0.5rem solid var(--accent);
-    padding: 1.5rem;
 }
 
 .dashboardcard-Sunrise > h1 {
@@ -568,20 +574,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Sunset {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    border: 0.5rem solid transparent;
-    padding: 1.5rem;
     width: 25rem;
     grid-area: Sunset;
-    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
-}
-
-.dashboardcard-Sunset:hover {
-    transform: scale(1.03);
-    border: 0.5rem solid var(--accent);
-    padding: 1.5rem;
 }
 
 .dashboardcard-Sunset > h1 {
@@ -824,7 +818,6 @@ main > section#dataDisplay {
     background-color: rgba(58, 134, 255, 0.1);
     border-left: 3px solid var(--accent);
 } 
-
 
 .dashboard-cardweek > img {
     margin-left: 5rem;
