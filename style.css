@@ -316,7 +316,7 @@ main > section#dataDisplay {
 .container3 { 
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
-    gap: 1rem;
+    gap: 2rem;
     grid-auto-rows: minmax(15rem, auto);
     grid-template-areas: 
     "WindSpeed Humidity Sunrise"
@@ -345,6 +345,27 @@ main > section#dataDisplay {
     height: 2rem;
 }
 
+.dashboardcard-WindSpeed > h2{
+    margin-left: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.dashboardcard-WindSpeed > h3 {
+    margin-left: 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 0.7rem;
+}
+
+.dashboardcard-WindSpeed > p {
+    margin-left: 3rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: 0.7rem;
+}
+
 .dashboardcard-Humidity {
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
@@ -356,25 +377,41 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h1 {
-    margin-left: 3rem;
+    margin-left: 4.3rem;
     font-size: 1.3rem;
     font-weight: 500;
 }
 
 .Humidity-drop { /* Rain drop SVG */
     position: absolute;   
-    margin-left: 1rem;
-    width: 1rem;
-    height: 1rem;
-    margin-top: 0.7rem;
+    margin-left: 1.2rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.52rem;
     font-weight: 500;
     color: var(--text-primary);   
+    z-index: 100;
 }
 
 .Humidity { /* Wave-ish Svg */
+    margin-top: -0.25rem;
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.dashboardcard-Humidity > h2 {
+    margin-left: 6rem;
+    font-size: 2.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.dashboardcard-Humidity > p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
 }
 
 .dashboardcard-Rainfall {
@@ -388,8 +425,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Rainfall > h1 {
-    margin-left: 3rem;
-    font-size: 1.3rem;
+    margin-left: 3.5rem;
+    font-size: 1.4rem;
     font-weight: 500;
 }
 
@@ -397,6 +434,20 @@ main > section#dataDisplay {
     position: absolute;
     width: 2rem;
     height: 2rem;
+}
+
+.dashboardcard-Rainfall > h2 {
+    margin-left: 2.8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.dashboardcard-Rainfall > p {
+    margin-left: 3.2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 2rem;
 }
 
 .dashboardcard-UV-Index {
@@ -410,7 +461,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h1 {
-    margin-left: 3rem;
+    margin-left: 4rem;
     font-size: 1.3rem;
     font-weight: 500;
 }
@@ -419,6 +470,20 @@ main > section#dataDisplay {
     position: absolute;
     width: 2rem;
     height: 2rem;
+}
+
+.dashboardcard-UV-Index > h2 {
+    margin-left: 9rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.dashboardcard-UV-Index > p {
+    margin-left: 3.2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 2rem;
 }
 
 .dashboardcard-Sunrise {
@@ -433,15 +498,25 @@ main > section#dataDisplay {
 
 .dashboardcard-Sunrise > h1 {
     margin-top: 2rem;
-    margin-left: 7rem;
-    font-size: 1.6rem;
+    margin-left: 9rem;
+    font-size: 1.8rem;
     font-weight: 500;
 }
 
-.dashboardcard-Sunrise > svg {
+.dashboardcard-Sunrise > img {
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    margin-top: 1rem;
+    margin-left: -0.5rem;
+    width: 7.5rem;
+    height: 7.5rem;
+}
+
+.dashboardcard-Sunrise > h2 {
+    letter-spacing: 0.2rem;
+    margin-top: 0.5rem;
+    margin-left: 9rem;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .dashboardcard-Sunset {
@@ -456,15 +531,25 @@ main > section#dataDisplay {
 
 .dashboardcard-Sunset > h1 {
     margin-top: 2rem;
-    margin-left: 7rem;
-    font-size: 1.6rem;
+    margin-left: 9rem;
+    font-size: 1.8rem;
     font-weight: 500;
 }
 
-.dashboardcard-Sunset > svg {
+.dashboardcard-Sunset > img {
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    margin-top: 1rem;
+    margin-left: -0.5rem;
+    width: 7.5rem;
+    height: 7.5rem;
+}
+
+.dashboardcard-Sunset > h2 {
+    letter-spacing: 0.2rem;
+    margin-top: 0.5rem;
+    margin-left: 9rem;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 /* Dropdown celsius / fahrenheit */
