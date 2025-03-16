@@ -316,6 +316,7 @@ main > section#dataDisplay {
 .container3 { 
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
+    margin-top: -0.5rem;
     gap: 2rem;
     grid-auto-rows: minmax(15rem, auto);
     grid-template-areas: 
@@ -327,10 +328,18 @@ main > section#dataDisplay {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
+    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: WindSpeed;
+}
+
+.dashboardcard-WindSpeed:hover {
+    transform: scale(1.03);
+    transition: var(--transition);
+    border: 0.5rem solid var(--accent);
+    padding: 1.5rem;
 }
 
 .dashboardcard-WindSpeed > h1 {
@@ -346,21 +355,21 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-WindSpeed > h2{
-    margin-left: 2rem;
+    text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1rem;
 }
 
 .dashboardcard-WindSpeed > h3 {
-    margin-left: 2.5rem;
+    text-align: center;
     font-size: 1.4rem;
     font-weight: 500;
     margin-top: 0.7rem;
 }
 
 .dashboardcard-WindSpeed > p {
-    margin-left: 3rem;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 400;
     margin-top: 0.7rem;
@@ -370,14 +379,23 @@ main > section#dataDisplay {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
+    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: Humidity;
 }
 
+.dashboardcard-Humidity:hover {
+    transform: scale(1.03);
+    transition: var(--transition);
+    border: 0.5rem solid var(--accent);
+    padding: 1.5rem;
+}
+
 .dashboardcard-Humidity > h1 {
-    margin-left: 4.3rem;
+    text-align: right;
+    margin-right: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
 }
@@ -401,27 +419,37 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h2 {
-    margin-left: 6rem;
+    position: absolute;
+    text-align: right;
+    margin-left: 5.5rem;
     font-size: 2.1rem;
     font-weight: 600;
     margin-top: 1.5rem;
 }
 
 .dashboardcard-Humidity > p {
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
-    margin-top: 2rem;
-    margin-left: 0.5rem;
+    margin-top: 5.25rem;
 }
 
 .dashboardcard-Rainfall {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
+    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: Rainfall;
+}
+
+.dashboardcard-Rainfall:hover {
+    transform: scale(1.03);
+    transition: var(--transition);
+    border: 0.5rem solid var(--accent);
+    padding: 1.5rem;
 }
 
 .dashboardcard-Rainfall > h1 {
@@ -437,14 +465,14 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Rainfall > h2 {
-    margin-left: 2.8rem;
+    text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1.5rem;
 }
 
 .dashboardcard-Rainfall > p {
-    margin-left: 3.2rem;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 2rem;
@@ -454,16 +482,26 @@ main > section#dataDisplay {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
+    border: 0.5rem solid transparent;
     width: 15rem;
     grid-area: UV-Index;
 }
 
+.dashboardcard-UV-Index:hover {
+    transform: scale(1.03);
+    transition: var(--transition);
+    border: 0.5rem solid var(--accent);
+    padding: 1.5rem;
+}
+
 .dashboardcard-UV-Index > h1 {
-    margin-left: 4rem;
+    text-align: right;
+    margin-right: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
+    margin-left: 2rem;
 }
 
 .dashboardcard-UV-Index > svg {
@@ -473,14 +511,15 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h2 {
-    margin-left: 9rem;
+    text-align: right;
+    margin-right: 1rem;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1.5rem;
 }
 
 .dashboardcard-UV-Index > p {
-    margin-left: 3.2rem;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 2rem;
@@ -490,31 +529,40 @@ main > section#dataDisplay {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
+    border: 0.5rem solid transparent;
     width: 25rem;
     grid-area: Sunrise;
 }
 
+.dashboardcard-Sunrise:hover {
+    transform: scale(1.03);
+    transition: var(--transition);
+    border: 0.5rem solid var(--accent);
+    padding: 1.5rem;
+}
+
 .dashboardcard-Sunrise > h1 {
+    text-align: right;
     margin-top: 2rem;
-    margin-left: 9rem;
+    margin-right: 5.2rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
 
 .dashboardcard-Sunrise > img {
     position: absolute;
-    margin-top: 1rem;
     margin-left: -0.5rem;
+    margin-top: 1rem;
     width: 7.5rem;
     height: 7.5rem;
 }
 
 .dashboardcard-Sunrise > h2 {
+    text-align: right;
+    margin-right: 1.9rem;
     letter-spacing: 0.2rem;
-    margin-top: 0.5rem;
-    margin-left: 9rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
@@ -523,15 +571,23 @@ main > section#dataDisplay {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
+    border: 0.5rem solid transparent;
+    padding: 1.5rem;
     width: 25rem;
     grid-area: Sunset;
+    transition: transform 0.3s ease, border 0.3s ease, padding 0.3s ease;
+}
+
+.dashboardcard-Sunset:hover {
+    transform: scale(1.03);
+    border: 0.5rem solid var(--accent);
+    padding: 1.5rem;
 }
 
 .dashboardcard-Sunset > h1 {
+    text-align: right;
+    margin-right: 5.2rem;
     margin-top: 2rem;
-    margin-left: 9rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
@@ -545,9 +601,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Sunset > h2 {
+    text-align: right;
+    margin-right: 1.9rem;
     letter-spacing: 0.2rem;
     margin-top: 0.5rem;
-    margin-left: 9rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
