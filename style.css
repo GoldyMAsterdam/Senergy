@@ -289,13 +289,15 @@ main > section#dataDisplay {
     font-weight: 400;
     margin-left: 2.5rem;
     margin-bottom: 3rem;
-} 
+}
 
 #weather-condition {
+    text-align: right;
+    width: 100%;
     font-size: 3rem;
     font-weight: 500;
     margin-top: -6rem;
-    margin-left: 35rem;
+    margin-left: -4rem;
 }
 /* Einde Buiten Temperatuur */
 
@@ -316,19 +318,84 @@ main > section#dataDisplay {
 .container3 { 
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
+    margin-top: -0.5rem;
     gap: 2rem;
     grid-auto-rows: minmax(15rem, auto);
     grid-template-areas: 
     "WindSpeed Humidity Sunrise"
     "Rainfall UV-Index Sunset";
+    position: relative;
+}
+
+.dashboardcard-WindSpeed, .dashboardcard-Humidity, .dashboardcard-Rainfall,
+.dashboardcard-UV-Index, .dashboardcard-Sunrise, .dashboardcard-Sunset {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.dashboardcard-WindSpeed:hover, .dashboardcard-Humidity:hover, .dashboardcard-Rainfall:hover,
+.dashboardcard-UV-Index:hover, .dashboardcard-Sunrise:hover, .dashboardcard-Sunset:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(58, 134, 255, 0.8),  0 0 40px rgba(58, 134, 255, 0.6), 0 0 60px rgba(58, 134, 255, 0.4);
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.dashboardcard-WindSpeed:hover::before, .dashboardcard-Humidity:hover::before, .dashboardcard-Rainfall:hover::before,
+.dashboardcard-UV-Index:hover::before, .dashboardcard-Sunrise:hover::before, .dashboardcard-Sunset:hover::before, .dashboardcard-WindSpeed:hover::after, 
+.dashboardcard-Humidity:hover,.dashboardcard-Rainfall:hover::after, .dashboardcard-UV-Index:hover::after, .dashboardcard-Sunrise:hover::after, 
+.dashboardcard-Sunset:hover::after {
+    content: '';
+    position: absolute;
+    width: 105%;
+    height: 105%;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    z-index: 1;
+    border-radius: calc(var(--border-radius) + 3px);
+    background-image: conic-gradient(from var(--angle), transparent 75%, var(--accent-color));
+    animation: spin 3s infinite linear;
+}
+
+@keyframes spin {
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+
+.dashboardcard-WindSpeed::before {
+    color: var(--accent);
+}
+.dashboardcard-Humidity::before {
+    color: var(--accent);
+}
+.dashboardcard-Rainfall::before {
+    color: var(--accent);
+}
+.dashboardcard-UV-Index::before {
+    color: var(--accent);
+}
+.dashboardcard-Sunrise::before {
+    color: var(--accent);
+}
+.dashboardcard-Sunset::before {
+    color: var(--accent);
 }
 
 .dashboardcard-WindSpeed {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
     width: 15rem;
     grid-area: WindSpeed;
 }
@@ -346,38 +413,34 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-WindSpeed > h2{
-    margin-left: 2rem;
+    text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1rem;
 }
 
 .dashboardcard-WindSpeed > h3 {
-    margin-left: 2.5rem;
+    text-align: center;
     font-size: 1.4rem;
     font-weight: 500;
     margin-top: 0.7rem;
 }
 
 .dashboardcard-WindSpeed > p {
-    margin-left: 3rem;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 400;
     margin-top: 0.7rem;
 }
 
 .dashboardcard-Humidity {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
     width: 15rem;
     grid-area: Humidity;
 }
 
 .dashboardcard-Humidity > h1 {
-    margin-left: 4.3rem;
+    text-align: right;
+    margin-right: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
 }
@@ -401,25 +464,22 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h2 {
-    margin-left: 6rem;
+    position: absolute;
+    text-align: right;
+    margin-left: 5.5rem;
     font-size: 2.1rem;
     font-weight: 600;
     margin-top: 1.5rem;
 }
 
 .dashboardcard-Humidity > p {
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
-    margin-top: 2rem;
-    margin-left: 0.5rem;
+    margin-top: 5.25rem;
 }
 
 .dashboardcard-Rainfall {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
     width: 15rem;
     grid-area: Rainfall;
 }
@@ -437,33 +497,30 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Rainfall > h2 {
-    margin-left: 2.8rem;
+    text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1.5rem;
 }
 
 .dashboardcard-Rainfall > p {
-    margin-left: 3.2rem;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 2rem;
 }
 
 .dashboardcard-UV-Index {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
     width: 15rem;
     grid-area: UV-Index;
 }
 
 .dashboardcard-UV-Index > h1 {
-    margin-left: 4rem;
+    text-align: right;
+    margin-right: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
+    margin-left: 2rem;
 }
 
 .dashboardcard-UV-Index > svg {
@@ -473,65 +530,58 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h2 {
-    margin-left: 9rem;
+    text-align: right;
+    margin-right: 1rem;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1.5rem;
 }
 
 .dashboardcard-UV-Index > p {
-    margin-left: 3.2rem;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 2rem;
 }
 
 .dashboardcard-Sunrise {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
     width: 25rem;
     grid-area: Sunrise;
 }
 
 .dashboardcard-Sunrise > h1 {
+    text-align: right;
     margin-top: 2rem;
-    margin-left: 9rem;
+    margin-right: 5.2rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
 
 .dashboardcard-Sunrise > img {
     position: absolute;
-    margin-top: 1rem;
     margin-left: -0.5rem;
+    margin-top: 1rem;
     width: 7.5rem;
     height: 7.5rem;
 }
 
 .dashboardcard-Sunrise > h2 {
+    text-align: right;
+    margin-right: 1.9rem;
     letter-spacing: 0.2rem;
-    margin-top: 0.5rem;
-    margin-left: 9rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
 
 .dashboardcard-Sunset {
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, 20%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    transition: var(--transition);
     width: 25rem;
     grid-area: Sunset;
 }
 
 .dashboardcard-Sunset > h1 {
+    text-align: right;
+    margin-right: 5.2rem;
     margin-top: 2rem;
-    margin-left: 9rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
@@ -545,9 +595,10 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Sunset > h2 {
+    text-align: right;
+    margin-right: 1.9rem;
     letter-spacing: 0.2rem;
     margin-top: 0.5rem;
-    margin-left: 9rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
@@ -767,7 +818,6 @@ main > section#dataDisplay {
     background-color: rgba(58, 134, 255, 0.1);
     border-left: 3px solid var(--accent);
 } 
-
 
 .dashboard-cardweek > img {
     margin-left: 5rem;
