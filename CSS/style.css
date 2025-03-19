@@ -7,10 +7,15 @@
 :root {
     --primary-bg: #060c1a;
     --sidebar-bg: #0e1421;
+    --card-bg: rgba(255, 255, 255, 0.08);
     --text-primary: #ffffff;
     --text-secondary: #a0a4ad;
     --text-muted: #676b73;
     --accent: #3a86ff;
+    --accent-hover: #2a76ef;
+    --green: #4cd964;
+    --orange: #ff9500;
+    --red: #ff3b30;
     --shadow: 0 4px 9px rgba(0, 0, 0, 0.25);
     --border-radius: 1.6rem;
     --transition: all 0.3s ease;
@@ -258,6 +263,7 @@ main > section#dataDisplay {
     cursor: pointer;
 }
 .buitentemperatuur-grid > div > button {
+    font-size: 1.6rem;
     background-color: var(--accent);
     color: var(--text-primary);
     padding: 1rem 1.5rem;
@@ -299,7 +305,7 @@ main > section#dataDisplay {
     font-size: 3rem;
     font-weight: 500;
     margin-top: -6rem;
-    margin-left: -4rem;
+    margin-left: -10rem;
 }
 
 /* Location Button */
@@ -471,7 +477,6 @@ main > section#dataDisplay {
 
 .dashboardcard-WindSpeed, .dashboardcard-Humidity, .dashboardcard-Rainfall,
 .dashboardcard-UV-Index, .dashboardcard-Sunrise, .dashboardcard-Sunset {
-    position: relative;
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 1.5rem;
@@ -492,56 +497,6 @@ main > section#dataDisplay {
     inherits: false;
 }
 
-.dashboardcard-WindSpeed:hover::before, .dashboardcard-Humidity:hover::before, .dashboardcard-Rainfall:hover::before,
-.dashboardcard-UV-Index:hover::before, .dashboardcard-Sunrise:hover::before, .dashboardcard-Sunset:hover::before, .dashboardcard-WindSpeed:hover::after, 
-.dashboardcard-Humidity:hover,.dashboardcard-Rainfall:hover::after, .dashboardcard-UV-Index:hover::after, .dashboardcard-Sunrise:hover::after, 
-.dashboardcard-Sunset:hover::after {
-    content: '';
-    position: absolute;
-    width: 105%;
-    height: 105%;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    z-index: 1;
-    background-image: conic-gradient(from var(--angle), transparent 75%, var(--accent-color));
-    animation: spin 3s infinite linear;
-}
-
-.dashboardcard-WindSpeed:hover::before, .dashboardcard-Humidity:hover::before, .dashboardcard-Rainfall:hover::before,
-.dashboardcard-UV-Index:hover::before, .dashboardcard-Sunrise:hover::before, .dashboardcard-Sunset:hover::before {
-    filter: blur(1.5rem);
-    opacity: 0.5;    
-}
-
-@keyframes spin {
-    from{
-        --angle: 0deg;
-    }
-    to{
-        --angle: 360deg;
-    }
-}
-
-.dashboardcard-WindSpeed::before {
-    color: var(--accent);
-}
-.dashboardcard-Humidity::before {
-    color: var(--accent);
-}
-.dashboardcard-Rainfall::before {
-    color: var(--accent);
-}
-.dashboardcard-UV-Index::before {
-    color: var(--accent);
-}
-.dashboardcard-Sunrise::before {
-    color: var(--accent);
-}
-.dashboardcard-Sunset::before {
-    color: var(--accent);
-}
 
 .dashboardcard-WindSpeed {
     width: 15rem;
@@ -817,7 +772,7 @@ main > section#dataDisplay {
     margin-bottom: 3rem;
     display: grid;
     margin-top: -35rem;
-    margin-left: 76rem;
+    margin-left: 87rem;
     height: 80rem;
 }
 
