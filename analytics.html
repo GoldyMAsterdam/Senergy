@@ -67,46 +67,31 @@
                 <hr class="line">
                 <h1>Energy Consumption vs Production</h1>
 
-                <div class="chart-legend">
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color chart-legend-consumption"></div>
-                        <span>Consumption</span>
+                <div class="chart-text">
+                    <div class="chart-text-item">
+                        <span>
+                            <svg class="chart-consumption-svg" xlmns="http://www.w3.org/2000/svg">
+                                <circle r="10" cx="10" cy="12" fill="#3a86ff"/>
+                        </svg>
+                        Consumption</span>
                     </div>
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color chart-legend-production"></div>
-                        <span>Production</span>
+                    <div class="chart-text-item-2">
+                        <span>
+                            <svg class="chart-production-svg" height="100" width="100" xlmns="http://www.w3.org/2000/svg">
+                                <circle r="10" cx="10" cy="89" fill="#4cd964"/>
+                        </svg>Production</span>
                     </div>
                 </div>
                 
                 <div class="chart-container">
                     <div class="chart-column">
-                        <div class="chart-bar chart-bar-consumption" style="height: 190px;"></div>
+                        <div class="chart-bar chart-bar-consumption" style="height: 170px;"></div>
                         <div class="chart-bar chart-bar-production" style="height: 90px;"></div>
                     </div>
                     
                     <div class="chart-column">
-                        <div class="chart-bar chart-bar-consumption" style="height: 90px;"></div>
-                        <div class="chart-bar chart-bar-production" style="height: 80px;"></div>
-                    </div>
-                    
-                    <div class="chart-column">
-                        <div class="chart-bar chart-bar-consumption" style="height: 80px;"></div>
-                        <div class="chart-bar chart-bar-production" style="height: 70px;"></div>
-                    </div>
-                    
-                    <div class="chart-column">
-                        <div class="chart-bar chart-bar-consumption" style="height: 90px;"></div>
-                        <div class="chart-bar chart-bar-production" style="height: 65px;"></div>
-                    </div>
-                    
-                    <div class="chart-column">
                         <div class="chart-bar chart-bar-consumption" style="height: 110px;"></div>
-                        <div class="chart-bar chart-bar-production" style="height: 70px;"></div>
-                    </div>
-                    
-                    <div class="chart-column">
-                        <div class="chart-bar chart-bar-consumption" style="height: 90px;"></div>
-                        <div class="chart-bar chart-bar-production" style="height: 80px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 120px;"></div>
                     </div>
                     
                     <div class="chart-column">
@@ -114,19 +99,39 @@
                         <div class="chart-bar chart-bar-production" style="height: 70px;"></div>
                     </div>
                     
-                    <div class="chart-column">
+                    <div class="chart-column" style="margin-bottom: 6rem;">
                         <div class="chart-bar chart-bar-consumption" style="height: 70px;"></div>
                         <div class="chart-bar chart-bar-production" style="height: 80px;"></div>
                     </div>
                     
-                    <div class="chart-column">
+                    <div class="chart-column" style="margin-bottom: 8rem;">
                         <div class="chart-bar chart-bar-consumption" style="height: 60px;"></div>
                         <div class="chart-bar chart-bar-production" style="height: 90px;"></div>
                     </div>
-
-                    <div class="chart-column">
+                    
+                    <div class="chart-column" style="margin-bottom: 12rem;">
                         <div class="chart-bar chart-bar-consumption" style="height: 50px;"></div>
                         <div class="chart-bar chart-bar-production" style="height: 75px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 10rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 95px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 65px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 7rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 40px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 110px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 5rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 105px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 45px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 9rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 75px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 100px;"></div>
                     </div>
                     
                     <div class="chart-axis">
@@ -138,6 +143,16 @@
                         <span>18:00</span>
                     </div>
                 </div>
+        </article>
+        <article class="energy-use">
+            <div class="peak-demand-grid">
+                <h1>Peak Demand</h1>
+            </div>
+            <div class="self-use-grid">
+                <h1>Self-Sufficiency</h1>
+            </div>
+
+        </article>
     </main>
 </body>
 </html>

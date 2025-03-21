@@ -319,7 +319,7 @@ main > section#dataDisplay {
 /* Energy Consumption vs Production */
 .container2 {
     display: grid;
-    grid-template-columns: 10fr 0fr; 
+    grid-template-columns: 1, 10fr 0fr;  
     gap: 2rem;
     margin-left: 2rem;
     margin-top: 2rem;
@@ -347,6 +347,7 @@ main > section#dataDisplay {
     background-color: var(--transparent);
     border: none;
     padding: 2rem;
+    border-bottom: none;
     border-top: 1px solid var(--text-muted);
     z-index: 0;
 }
@@ -358,7 +359,8 @@ main > section#dataDisplay {
     padding-bottom: 3rem;
     position: relative;
     overflow-x: auto;
-    margin-left: 3rem;
+    margin-left: 1rem;
+    margin-right: 3rem;
     z-index: 1000;
 }
 
@@ -371,7 +373,7 @@ main > section#dataDisplay {
 }
 
 .chart-bar {
-    border-radius: 0.6rem;
+    border-radius: 0.2rem;
 }
 
 .chart-bar-consumption {
@@ -382,25 +384,54 @@ main > section#dataDisplay {
     background-color: #4cd964;
 }
 
-.chart-legend {
-    display: flex;
-    justify-content: flex-end;
+.chart-text {
+    position: absolute;
     gap: 2rem;
-    margin-top: -3rem;
+    margin-right: 5rem;
     color: var(--text-secondary);
     font-size: 1.6rem;
 }
 
-.chart-legend-item {
+.chart-text-item {
+    position: absolute;
     display: flex;
     align-items: center;
+    margin-left: 92rem;
     gap: 0.8rem;
+    margin-top: 0.5rem;
 }
 
-.chart-legend-color {
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
+.chart-text-item > span > svg {
+    position: absolute;
+    left: -23%;
+}
+
+.chart-text-item-2 {
+    display: flex;
+    align-items: center;
+    margin-left: 115rem;
+    gap: 0.8rem;
+    margin-bottom: 5rem;
+}
+
+.chart-text-item-2 > span > svg {
+    position: absolute;
+    right: 20%;
+    bottom: 7%;
+}
+
+.chart-text-item-2 > span {
+    position: absolute;
+    top: 9%;   
+    right: -5%;
+}
+
+.chart-consumption-svg {
+    position: absolute;
+}
+
+.chat-production-svg {
+    position: absolute;
 }
 
 .chart-axis {
@@ -420,12 +451,52 @@ main > section#dataDisplay {
     font-weight: 500;
     color: var(--text-primary);
 }
+/* End Energy Consumption vs Production */
 
-.chart-divider {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin: 1.5rem 0 3rem 0;
+/* Energy Use Grid */
+
+.energy-use {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+.peak-demand-grid {
+    margin-top: -2rem;
+    padding: 2rem;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    width: 64rem;
+    height: 50vh;
+    max-width: 100%;
+    box-shadow: var(--shadow);
+}
+
+.peak-demand-grid > h1 {
+    font-size: 2.6rem;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.self-use-grid {
+    margin-top: -2rem;
+    padding: 2rem;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    width: 64rem;
+    height: 50vh;
+    max-width: 100%;
+    box-shadow: var(--shadow);
+}
+
+.self-use-grid > h1 {
+    font-size: 2.6rem;
+    text-align: left;
+    margin-left: 2rem;
 }
 
 /* Footer */
