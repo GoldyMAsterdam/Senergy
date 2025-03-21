@@ -319,15 +319,15 @@ main > section#dataDisplay {
 /* Energy Consumption vs Production */
 .container2 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 10fr 0fr; 
     gap: 2rem;
     margin-left: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
     padding: 2rem;
     background-color: var(--sidebar-bg);
     border-radius: var(--border-radius);
     width: 95%;
-    height: 40rem;
+    height: 45rem;
     box-shadow: var(--shadow);
 }
 
@@ -348,23 +348,24 @@ main > section#dataDisplay {
     border: none;
     padding: 2rem;
     border-top: 1px solid var(--text-muted);
+    z-index: 0;
 }
 /* Energy Consumption vs Production Chart */
-/* Energy Consumption vs Production Chart - Minimalist Version */
 .chart-container {
-    width: 100%;
-    height: 250px;
-    margin-top: 4rem;
     display: flex;
     align-items: flex-end;
-    gap: 0.5rem;
+    gap: 0.3rem;
     padding-bottom: 3rem;
     position: relative;
+    overflow-x: auto;
+    margin-left: 3rem;
+    z-index: 1000;
 }
 
 .chart-column {
     display: flex;
     flex-direction: column;
+    min-width: 20px;
     flex: 1;
     gap: 0.4rem;
 }
@@ -375,12 +376,10 @@ main > section#dataDisplay {
 
 .chart-bar-consumption {
     background-color: #3a86ff;
-    height: 100px;
 }
 
 .chart-bar-production {
     background-color: #4cd964;
-    height: 70px;
 }
 
 .chart-legend {
