@@ -25,7 +25,6 @@ html, body {
     height: 100%;
     font-family: "Poppins", sans-serif;
     font-size: 62.5%; /* 1 rem = 10px */
-    overflow-x: hidden;
 }
 
 body {
@@ -207,7 +206,7 @@ main > section#dataDisplay {
     margin-left: 1rem;
 }
 
-/* 3 Boxes Grid */
+/* 3 Box Grid */
 .container, .energy-use {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -218,8 +217,8 @@ main > section#dataDisplay {
 
 .container > div, .energy-use > div {
     width: 100%;
-    max-width: 40rem;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
 }
 
 .box-energy, .box-solar, .box-grid {
@@ -359,6 +358,7 @@ main > section#dataDisplay {
     border-top: 1px solid var(--text-muted);
     z-index: 0;
 }
+
 /* Energy Consumption vs Production Chart */
 .chart-container {
     display: flex;
@@ -465,13 +465,15 @@ main > section#dataDisplay {
 
 .energy-use {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 3rem;
     padding: 2rem;
 }
 
 .peak-demand-grid {
+    position: relative;
+    overflow: hidden;
     margin-top: -2rem;
     padding: 2rem;
     background-color: var(--sidebar-bg);
@@ -490,15 +492,15 @@ main > section#dataDisplay {
     font-weight: 600;
 }
 
-.peak-demand-grid > h2 {
-    font-size: 1.6rem;
-    font-weight: 500;
+.peak-demand-grid > h2, .self-use-grid > h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
     margin-right: 30rem;
     color: var(--text-secondary);
 }
 
-.peak-demand-grid > h3 {
-    font-size: 2.5rem;
+.peak-demand-grid > h3, .self-use-grid > h3 {
+    font-size: 2rem;
     font-weight: 500;
 }
 
@@ -508,30 +510,30 @@ main > section#dataDisplay {
 }
 
 .Time {
-    margin-top: 1rem;
+    margin-top: 2.5rem;
 }
 
 .Weekly {
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     margin-left: 2rem;
 }
 
-.svg-1 {
+.svg-1, .svg-clock, .svg-average {
     position: absolute;
-    top: 98.5%;
-    left: 12.5%;
-    width: 30rem;
-    height: 30rem;
+    top: 41%;
+    transform: translateY(-50%);
+    right: 44rem;
+    width: 25rem;
+    height: 25rem;
 }
 
 .svg-clock {
-    position: absolute;
-    top: 100%;
-    left: 15.5%;
-    width: 30rem;
-    height: 30rem;
+    top: 40%;
 }
 
+.svg-average {
+    top: 39%;
+}
 .self-use-grid {
     margin-top: -2rem;
     padding: 2rem;
@@ -548,9 +550,27 @@ main > section#dataDisplay {
     font-size: 2.6rem;
     text-align: left;
     margin-left: 2rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
+.self-use-grid > h2 {
+    margin-top: 1rem;
+}
+
+.cons {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+}
+
+.svg-cons {
+    position: absolute;
+    top: 115%;
+    transform: translateY(-50%);
+    right: 51rem;
+    width: 25rem;
+    height: 25rem;
+    margin-top: 1rem;
+}
 
 
 /* Footer */
