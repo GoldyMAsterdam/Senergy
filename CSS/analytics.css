@@ -557,19 +557,32 @@ main > section#dataDisplay {
     margin-top: 1rem;
 }
 
-.cons {
+.arg {
     color: var(--text-secondary);
     font-size: 1.5rem;
 }
 
-.svg-cons {
+.svg-cons, .svg-bat {
     position: absolute;
-    top: 115%;
+    top: 117%;
     transform: translateY(-50%);
     right: 51rem;
-    width: 25rem;
-    height: 25rem;
-    margin-top: 1rem;
+    width: 27rem;
+    height: 27rem;
+}
+
+.svg-cons {
+    top: 107%;
+    width: 12rem;
+    height: 12rem;
+    right: 58.5rem;
+}
+
+.svg-bat {
+    top: 116%;
+    width: 7rem;
+    height: 6rem;
+    right: 60.8rem;
 }
 
 
