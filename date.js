@@ -311,16 +311,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     const apiKey = '601eeb12fe614d3ca94162605250503';
-    const city = 'Amsterdam';
-    const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
-    const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`;
-    
+    let currentCity = 'Amsterdam';
     let weatherData = null;
     let forecastData = null;
     
+    // Function to fetch weather data for a specific location
+// Function to fetch weather data for a specific location
+function fetchWeatherData(city) {
+    const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+    const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`;
+    
+    // Update the selected location display
+    const selectedLocationSpan = document.getElementById('selected-location');
+    if (selectedLocationSpan) {
+        selectedLocationSpan.textContent = city;
+    }
+    
     // Fetch current weather data
     fetch(weatherUrl)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+        return response.json();
+    })
     .then(data => {
         console.log('Current Weather Data:', data);
         weatherData = data;
@@ -334,8 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const temperature = Math.round(data.current.temp_c);
             const feelsLike = Math.round(data.current.feelslike_c);
             const condition = data.current.condition.text;
-            temperatureElement.textContent = `${temperature}°C`;
-            feelsLikeElement.textContent = `Feels like ${feelsLike}°C`;
+            
+            updateTemperatureDisplay(currentUnit);
             
             if (conditionElement) {
                 conditionElement.textContent = condition;
@@ -350,12 +364,18 @@ document.addEventListener('DOMContentLoaded', function() {
         updateAdditionalMetrics(data);
     })
     .catch(error => {
-        console.error('Error fetching current weather data:', error);
+        console.error('Error fetching weather data:', error);
+        alert('City not found. Please try again.');
     });
-
+    
     // Fetch forecast data
     fetch(forecastUrl)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+        return response.json();
+    })
     .then(data => {
         console.log('Forecast Data:', data);
         forecastData = data;
@@ -378,162 +398,124 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
         console.error('Error fetching forecast data:', error);
     });
-    
-    // Search functionality
-    const searchForm = document.getElementById('search-form');
-    const searchInput = document.getElementById('search-input');
-    
-    if (searchForm && searchInput) {
-        searchForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const searchCity = searchInput.value.trim();
+}
+
+// Initialize with default city
+fetchWeatherData(currentCity);
+
+// Search functionality
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+
+if (searchForm && searchInput) {
+    searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchCity = searchInput.value.trim();
+        
+        if (searchCity) {
+            currentCity = searchCity;
+            fetchWeatherData(currentCity);
+            searchInput.value = '';
+        }
+    });
+}
+
+// Function to handle geolocation
+const locationButton = document.getElementById('location-button');
+
+if (locationButton) {
+    locationButton.addEventListener('click', function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                // Success callback
+                function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    currentCity = `${lat},${lon}`;
+                    fetchWeatherData(currentCity);
+                },
+                // Error callback
+                function(error) {
+                    console.error('Geolocation error:', error);
+                    alert('Unable to get your location. Please check your browser settings.');
+                }
+            );
+        } else {
+            alert('Geolocation is not supported by your browser.');
+        }
+    });
+}
+
+// Location picker modal functionality
+const modal = document.getElementById('location-modal');
+const locationPickerBtn = document.getElementById('location-picker-btn');
+const closeBtn = document.querySelector('.close-btn');
+const selectedLocationSpan = document.getElementById('selected-location');
+const locationItems = document.querySelectorAll('.location-item');
+const locationSearch = document.getElementById('location-search');
+
+// Open the modal when clicking the location picker button
+if (locationPickerBtn) {
+    locationPickerBtn.onclick = function() {
+        if (modal) {
+            modal.style.display = 'flex';
+        }
+    };
+}
+
+// Close the modal when clicking the X button
+if (closeBtn) {
+    closeBtn.onclick = function() {
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    };
+}
+
+// Close the modal when clicking outside the modal content
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
+
+// Handle location item clicks
+if (locationItems) {
+    locationItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const locationName = this.getAttribute('data-location');
+            if (selectedLocationSpan) {
+                selectedLocationSpan.textContent = locationName;
+            }
             
-            if (searchCity) {
-                // Update URLs with new city
-                const newWeatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchCity}&aqi=no`;
-                const newForecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchCity}&days=7&aqi=no&alerts=no`;
-                
-                // Fetch new weather data
-                fetch(newWeatherUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('City not found');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    weatherData = data;
-                    updateTemperatureDisplay(currentUnit);
-                    updateAdditionalMetrics(data);
-                    
-                    const conditionElement = document.getElementById('weather-condition');
-                    const weatherIconElement = document.querySelector('main img[alt="Weather Icon"]');
-                    
-                    if (conditionElement) {
-                        conditionElement.textContent = data.current.condition.text;
-                    }
-                    
-                    if (weatherIconElement) {
-                        weatherIconElement.src = `IMG/${getWeatherIcon(data.current.condition.text)}`;
-                        weatherIconElement.alt = data.current.condition.text;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching weather data:', error);
-                    alert('City not found. Please try again.');
-                });
-                
-                // Fetch new forecast data
-                fetch(newForecastUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('City not found');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    forecastData = data;
-                    
-                    // Update location information
-                    const locationElement = document.getElementById('location-name');
-                    if (locationElement && data.location) {
-                        locationElement.textContent = `${data.location.name}, ${data.location.country}`;
-                    }
-                    
-                    // Update sunrise and sunset information
-                    updateSunriseSunset(data);
-                    
-                    // Update hourly forecast
-                    updateHourlyForecast(currentUnit);
-                    
-                    // Update weekly forecast
-                    updateWeeklyForecast(currentUnit);
-                })
-                .catch(error => {
-                    console.error('Error fetching forecast data:', error);
-                });
-                
-                // Clear input field
-                searchInput.value = '';
+            if (modal) {
+                modal.style.display = 'none';
             }
+            
+            // Update weather data based on selected location
+            currentCity = locationName;
+            fetchWeatherData(currentCity);
+            console.log(`Location changed to: ${locationName}`);
         });
-    }
-    
-    // Function to handle geolocation
-    const locationButton = document.getElementById('location-button');
-    
-    if (locationButton) {
-        locationButton.addEventListener('click', function() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    // Success callback
-                    function(position) {
-                        const lat = position.coords.latitude;
-                        const lon = position.coords.longitude;
-                        const geoUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
-                        const geoForecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
-                        
-                        // Fetch weather data for current location
-                        fetch(geoUrl)
-                        .then(response => response.json())
-                        .then(data => {
-                            weatherData = data;
-                            updateTemperatureDisplay(currentUnit);
-                            updateAdditionalMetrics(data);
-                            
-                            const conditionElement = document.getElementById('weather-condition');
-                            const weatherIconElement = document.querySelector('main img[alt="Weather Icon"]');
-                            
-                            if (conditionElement) {
-                                conditionElement.textContent = data.current.condition.text;
-                            }
-                            
-                            if (weatherIconElement) {
-                                weatherIconElement.src = `IMG/${getWeatherIcon(data.current.condition.text)}`;
-                                weatherIconElement.alt = data.current.condition.text;
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching geolocation weather data:', error);
-                        });
-                        
-                        // Fetch forecast data for current location
-                        fetch(geoForecastUrl)
-                        .then(response => response.json())
-                        .then(data => {
-                            forecastData = data;
-                            
-                            // Update location information
-                            const locationElement = document.getElementById('location-name');
-                            if (locationElement && data.location) {
-                                locationElement.textContent = `${data.location.name}, ${data.location.country}`;
-                            }
-                            
-                            // Update sunrise and sunset information
-                            updateSunriseSunset(data);
-                            
-                            // Update hourly forecast
-                            updateHourlyForecast(currentUnit);
-                            
-                            // Update weekly forecast
-                            updateWeeklyForecast(currentUnit);
-                        })
-                        .catch(error => {
-                            console.error('Error fetching geolocation forecast data:', error);
-                        });
-                    },
-                    // Error callback
-                    function(error) {
-                        console.error('Geolocation error:', error);
-                        alert('Unable to get your location. Please check your browser settings.');
-                    }
-                );
-            } else {
-                alert('Geolocation is not supported by your browser.');
-            }
-        });
-    }
-    
-    // Initialize the app with default settings
-    updateTemperatureDisplay('celsius');
+    });
+}
+
+// Filter locations based on search input
+if (locationSearch) {
+    locationSearch.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        if (locationItems) {
+            locationItems.forEach(item => {
+                const locationName = item.querySelector('span').textContent.toLowerCase();
+                
+                if (locationName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    });
+}
 });

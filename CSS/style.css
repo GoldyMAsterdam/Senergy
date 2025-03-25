@@ -7,10 +7,15 @@
 :root {
     --primary-bg: #060c1a;
     --sidebar-bg: #0e1421;
+    --card-bg: rgba(255, 255, 255, 0.08);
     --text-primary: #ffffff;
     --text-secondary: #a0a4ad;
     --text-muted: #676b73;
     --accent: #3a86ff;
+    --accent-hover: #2a76ef;
+    --green: #4cd964;
+    --orange: #ff9500;
+    --red: #ff3b30;
     --shadow: 0 4px 9px rgba(0, 0, 0, 0.25);
     --border-radius: 1.6rem;
     --transition: all 0.3s ease;
@@ -245,18 +250,20 @@ main > section#dataDisplay {
     gap: 0.5rem;
 }
 
-.buitentemperatuur-grid > .container > button > img {
-    margin-bottom: 0.3rem;
-    fill: white;
-    width: 2rem;
-    height: 2rem;
-}
-.buitentemperatuur-grid > .container > button > span {
-    font-size: 2.2rem;
+.selected-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--accent);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
     font-weight: 500;
-    margin-left: 0.3rem;
+    cursor: pointer;
 }
 .buitentemperatuur-grid > div > button {
+    font-size: 1.6rem;
     background-color: var(--accent);
     color: var(--text-primary);
     padding: 1rem 1.5rem;
@@ -266,6 +273,7 @@ main > section#dataDisplay {
     cursor: pointer;
     transition: var(--transition);
 }
+
 .buitentemperatuur-grid > div > h1 {
     font-size: 2rem;
     font-weight: 400;
@@ -297,8 +305,148 @@ main > section#dataDisplay {
     font-size: 3rem;
     font-weight: 500;
     margin-top: -6rem;
-    margin-left: -4rem;
+    margin-left: -10rem;
 }
+
+/* Location Button */
+.location-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s;
+}
+
+.location-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.location-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #1a1a2e;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+.modal-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header > h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 1.5rem;
+}
+
+.modal-body {
+    padding: 16px;
+}
+
+.search-container {
+    margin-bottom: 16px;
+}
+
+#location-search {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+#location-search::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.location-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: white;
+}
+
+.location-item > span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.location-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.location-item > img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1.2rem;
+}
+/* End Location Button */
+
 /* Einde Buiten Temperatuur */
 
 /* Begin Zonsopkomst */
@@ -329,7 +477,6 @@ main > section#dataDisplay {
 
 .dashboardcard-WindSpeed, .dashboardcard-Humidity, .dashboardcard-Rainfall,
 .dashboardcard-UV-Index, .dashboardcard-Sunrise, .dashboardcard-Sunset {
-    position: relative;
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 1.5rem;
@@ -341,6 +488,7 @@ main > section#dataDisplay {
 .dashboardcard-UV-Index:hover, .dashboardcard-Sunrise:hover, .dashboardcard-Sunset:hover {
     transform: scale(1.03);
     box-shadow: 0 0 20px rgba(58, 134, 255, 0.8),  0 0 40px rgba(58, 134, 255, 0.6), 0 0 60px rgba(58, 134, 255, 0.4);
+    box-sizing: border-box;
 }
 
 @property --angle{
@@ -349,51 +497,6 @@ main > section#dataDisplay {
     inherits: false;
 }
 
-.dashboardcard-WindSpeed:hover::before, .dashboardcard-Humidity:hover::before, .dashboardcard-Rainfall:hover::before,
-.dashboardcard-UV-Index:hover::before, .dashboardcard-Sunrise:hover::before, .dashboardcard-Sunset:hover::before, .dashboardcard-WindSpeed:hover::after, 
-.dashboardcard-Humidity:hover,.dashboardcard-Rainfall:hover::after, .dashboardcard-UV-Index:hover::after, .dashboardcard-Sunrise:hover::after, 
-.dashboardcard-Sunset:hover::after {
-    content: '';
-    position: absolute;
-    width: 105%;
-    height: 105%;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    z-index: 1;
-    border-radius: calc(var(--border-radius) + 3px);
-    background-image: conic-gradient(from var(--angle), transparent 75%, var(--accent-color));
-    animation: spin 3s infinite linear;
-}
-
-@keyframes spin {
-    from{
-        --angle: 0deg;
-    }
-    to{
-        --angle: 360deg;
-    }
-}
-
-.dashboardcard-WindSpeed::before {
-    color: var(--accent);
-}
-.dashboardcard-Humidity::before {
-    color: var(--accent);
-}
-.dashboardcard-Rainfall::before {
-    color: var(--accent);
-}
-.dashboardcard-UV-Index::before {
-    color: var(--accent);
-}
-.dashboardcard-Sunrise::before {
-    color: var(--accent);
-}
-.dashboardcard-Sunset::before {
-    color: var(--accent);
-}
 
 .dashboardcard-WindSpeed {
     width: 15rem;
@@ -439,8 +542,8 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h1 {
-    text-align: right;
-    margin-right: 1rem;
+    text-align: center;
+    margin-left: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
 }
@@ -464,9 +567,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-Humidity > h2 {
-    position: absolute;
-    text-align: right;
-    margin-left: 5.5rem;
+    text-align: center;
     font-size: 2.1rem;
     font-weight: 600;
     margin-top: 1.5rem;
@@ -474,9 +575,9 @@ main > section#dataDisplay {
 
 .dashboardcard-Humidity > p {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    margin-top: 5.25rem;
+    margin-top: 1.5rem;
 }
 
 .dashboardcard-Rainfall {
@@ -516,7 +617,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h1 {
-    text-align: right;
+    text-align: center;
     margin-right: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
@@ -530,8 +631,7 @@ main > section#dataDisplay {
 }
 
 .dashboardcard-UV-Index > h2 {
-    text-align: right;
-    margin-right: 1rem;
+    text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1.5rem;
@@ -551,7 +651,7 @@ main > section#dataDisplay {
 
 .dashboardcard-Sunrise > h1 {
     text-align: right;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     margin-right: 5.2rem;
     font-size: 1.8rem;
     font-weight: 500;
@@ -559,8 +659,8 @@ main > section#dataDisplay {
 
 .dashboardcard-Sunrise > img {
     position: absolute;
-    margin-left: -0.5rem;
-    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-top: 1.5rem;
     width: 7.5rem;
     height: 7.5rem;
 }
@@ -581,15 +681,15 @@ main > section#dataDisplay {
 .dashboardcard-Sunset > h1 {
     text-align: right;
     margin-right: 5.2rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     font-size: 1.8rem;
     font-weight: 500;
 }
 
 .dashboardcard-Sunset > img {
     position: absolute;
-    margin-top: 1rem;
-    margin-left: -0.5rem;
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
     width: 7.5rem;
     height: 7.5rem;
 }
@@ -598,7 +698,6 @@ main > section#dataDisplay {
     text-align: right;
     margin-right: 1.9rem;
     letter-spacing: 0.2rem;
-    margin-top: 0.5rem;
     font-size: 1.8rem;
     font-weight: 600;
 }
@@ -673,7 +772,7 @@ main > section#dataDisplay {
     margin-bottom: 3rem;
     display: grid;
     margin-top: -35rem;
-    margin-left: 76rem;
+    margin-left: 77rem;
     height: 80rem;
 }
 

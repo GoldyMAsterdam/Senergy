@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/analytics.css">
     <script src="https://kit.fontawesome.com/d661eaf4bb.js" crossorigin="anonymous"></script>
     <script src="date.js" defer></script>
     <title>Analytics</title>
@@ -31,7 +31,7 @@
             </a></li>
             <li><a href="Settings.html">
                 <svg data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z"></path></svg>
-            <span>Settings</span>
+            <span>Analytics</span>
             </a></li>
         </ul>
     </header>
@@ -39,7 +39,149 @@
         Test
     </nav>
     <main>
-        <h1></h1>
+        <h1 class="Title">Energy Analytics</h1>
+        <article>
+            <div class="Energyanalytics-grid">
+                <div class="container">
+                    <div class="box-energy">
+                            <h3>Energy Consumption</h3>
+                            <p>20 kWh</p>
+                            <h2><span style="color: var(--green);">+12.3%</span> <span style="color: var(--text-secondary);">compared to yesterday</span></h2>
+                    </div>
+                    <div class="box-solar">
+                            <h3>Solar Production</h3>
+                            <p>18.2kWh</p>
+                            <h2><span style="color: var(--green);">+8%</span> <span style="color: var(--text-secondary); font-weight: 400;">vs yesterday</span></h2>
+                    </div>
+                    <div class="box-grid">
+                            <h3>Energy Consumption</h3>
+                            <p>20 kWh</p>
+                            <h2><span style="color: var(--red);">-3%</span> <span style="color: var(--text-secondary); font-weight: 400;">vs yesterday</span></h2>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div class="Energyconsumption-grid">
+                <div class="container2">
+                <hr class="line">
+                <h1>Energy Consumption vs Production</h1>
+
+                <div class="chart-text">
+                    <div class="chart-text-item">
+                        <span>
+                            <svg class="chart-consumption-svg" xlmns="http://www.w3.org/2000/svg">
+                                <circle r="10" cx="10" cy="12" fill="#3a86ff"/>
+                        </svg>
+                        Consumption</span>
+                    </div>
+                    <div class="chart-text-item-2">
+                        <span>
+                            <svg class="chart-production-svg" height="100" width="100" xlmns="http://www.w3.org/2000/svg">
+                                <circle r="10" cx="10" cy="89" fill="#4cd964"/>
+                        </svg>Production</span>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-column">
+                        <div class="chart-bar chart-bar-consumption" style="height: 170px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 90px;"></div>
+                    </div>
+                    
+                    <div class="chart-column">
+                        <div class="chart-bar chart-bar-consumption" style="height: 110px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 120px;"></div>
+                    </div>
+                    
+                    <div class="chart-column">
+                        <div class="chart-bar chart-bar-consumption" style="height: 85px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 70px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 6rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 70px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 80px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 8rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 60px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 90px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 12rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 50px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 75px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 10rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 95px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 65px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 7rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 40px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 110px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 5rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 105px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 45px;"></div>
+                    </div>
+                    
+                    <div class="chart-column" style="margin-bottom: 9rem;">
+                        <div class="chart-bar chart-bar-consumption" style="height: 75px;"></div>
+                        <div class="chart-bar chart-bar-production" style="height: 100px;"></div>
+                    </div>
+                    
+                    <div class="chart-axis">
+                        <span>6:00</span>
+                        <span>8:00</span>
+                        <span>12:00</span>
+                        <span>14:00</span>
+                        <span>16:00</span>
+                        <span>18:00</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="energy-use">
+            <div class="peak-demand-grid">
+                <h1>Peak Demand</h1>
+
+                <svg class="svg-1"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"><circle cx="50" cy="50" r="25" fill="#2D3341" /><circle cx="50" cy="50" r="17" fill="#1E88E5" /><text x="50" y="57" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">1</text> </svg>  
+                <h2 class="Today">Today's Peak</h2>
+                <h3 style="margin-right: 34rem;">4.2<span style="font-size: 1.6rem; color: var(--text-secondary);"> kW</span></h3>
+                
+                <svg class="svg-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"><circle cx="50" cy="150" r="25" fill="#2D3341" /> <circle cx="50" cy="150" r="18" stroke="#1E88E5" stroke-width="2.5" fill="none" /><line x1="50" y1="150" x2="50" y2="138" stroke="#1E88E5" stroke-width="2.5" stroke-linecap="round" /><line x1="50" y1="150" x2="58" y2="155" stroke="#1E88E5" stroke-width="2.5" stroke-linecap="round" /></svg>
+                <h2 class="Time">Time of Peak</h2>
+                <h3 style="margin-right: 31rem;">14:30<span style="font-size: 1.6rem; color: var(--text-secondary);"> pm</span></h3>
+                
+                <svg class="svg-average"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"> <circle cx="50" cy="250" r="25" fill="#2D3341" /><polyline points="35,250 43,240 50,255 65,245" stroke="#1E88E5" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <h2 class="Weekly">Weekly Average</h2>
+                <h3 style="margin-right: 34rem;">3.8<span style="font-size: 1.6rem; color: var(--text-secondary);"> kW</span></h3>
+            </div>
+
+            <div class="self-use-grid">
+                <h1>Self-Sufficiency</h1>
+
+                <svg class="svg-cons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <circle cx="47.5" cy="50" r="25" fill="#2D3341"/>
+                    <g transform="translate(30, 30) scale(1.5)">
+                        <path fill="#1E88E5" d="M21.7,10.3l-9-8c-0.4-0.3-0.9-0.3-1.3,0l-9,8c-0.4,0.4-0.5,1-0.1,1.4s1,0.5,1.4,0.1L4,11.4V21c0,0.6,0.4,1,1,1h14c0.6,0,1-0.4,1-1v-9.6l0.3,0.3c0.4,0.4,1,0.3,1.4-0.1C22.1,11.3,22.1,10.6,21.7,10.3z M12,11c1.5,0,2.7,1.2,2.7,2.7c0,1.5-1.2,2.7-2.7,2.7c-1.5,0-2.7-1.2-2.7-2.7S10.5,11,12,11z M7,20c0-0.1,0-0.1,0.1-0.2c2.2-2.7,6.2-3.2,8.9-1c0.4,0.3,0.7,0.6,1,1c0,0,0,0.1,0.1,0.2H7z"/>
+                    </g>
+                </svg>
+                <h2>Self-Consumption</h2>
+                <h3 style="margin-right: 39.5rem;">78<span class="arg"> %</span></h3>
+
+                    <svg class="svg-bat"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2D3341"><circle cx="12" cy="12" r="12" fill="#"/> <path d="M14.5 11.5H12.5V8L9.5 13.5H11.5V17L14.5 11.5Z" fill="#3a86ff"/><rect x="7" y="4" width="10" height="16" rx="2" ry="2" fill="none" stroke="#3a86ff" stroke-width="1"/></svg>
+                <h2 style="margin-right: 33rem; margin-top: 2.5rem;">Battery Usage</h2>
+                <h3 style="margin-right: 36rem;">5.8<span class="arg"> kWh</span></h3>
+
+                <h2 style="margin-right: 29rem; margin-top: 2.5rem;">Grid Independence</h2>
+                <h3 style="margin-right: 40rem;">91<span class="arg"> %</span></h3>
+            </div>
+        </article>
     </main>
 </body>
 </html>
