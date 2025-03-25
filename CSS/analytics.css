@@ -25,12 +25,12 @@ html, body {
     height: 100%;
     font-family: "Poppins", sans-serif;
     font-size: 62.5%; /* 1 rem = 10px */
+    overflow-x: hidden;
 }
 
 body {
     background: var(--primary-bg);
     color: var(--text-primary);
-    overflow-x: hidden;
 }
 
 /* header */
@@ -208,12 +208,18 @@ main > section#dataDisplay {
 }
 
 /* 3 Boxes Grid */
-.container {
+.container, .energy-use {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     margin-top: 3rem;
     padding: 2rem;
+}
+
+.container > div, .energy-use > div {
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
 }
 
 .box-energy, .box-solar, .box-grid {
@@ -318,6 +324,7 @@ main > section#dataDisplay {
 
 /* Energy Consumption vs Production */
 .container2 {
+    position: relative;
     display: grid;
     grid-template-columns: 1, 10fr 0fr;  
     gap: 2rem;
@@ -329,6 +336,7 @@ main > section#dataDisplay {
     width: 95%;
     height: 45rem;
     box-shadow: var(--shadow);
+    overflow: hidden;
 }
 
 .container2 > h1 {
@@ -398,7 +406,7 @@ main > section#dataDisplay {
     align-items: center;
     margin-left: 92rem;
     gap: 0.8rem;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
 }
 
 .chart-text-item > span > svg {
@@ -416,13 +424,13 @@ main > section#dataDisplay {
 
 .chart-text-item-2 > span > svg {
     position: absolute;
-    right: 20%;
-    bottom: 7%;
+    right: 15%;
+    bottom: -10%;
 }
 
 .chart-text-item-2 > span {
     position: absolute;
-    top: 9%;   
+    top: 34%;   
     right: -5%;
 }
 
@@ -479,6 +487,49 @@ main > section#dataDisplay {
     font-size: 2.6rem;
     text-align: left;
     margin-left: 2rem;
+    font-weight: 600;
+}
+
+.peak-demand-grid > h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-right: 30rem;
+    color: var(--text-secondary);
+}
+
+.peak-demand-grid > h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.Today {
+    margin-top: 1rem;
+    margin-right: 30rem;
+}
+
+.Time {
+    margin-top: 1rem;
+}
+
+.Weekly {
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.svg-1 {
+    position: absolute;
+    top: 98.5%;
+    left: 12.5%;
+    width: 30rem;
+    height: 30rem;
+}
+
+.svg-clock {
+    position: absolute;
+    top: 100%;
+    left: 15.5%;
+    width: 30rem;
+    height: 30rem;
 }
 
 .self-use-grid {
@@ -497,7 +548,10 @@ main > section#dataDisplay {
     font-size: 2.6rem;
     text-align: left;
     margin-left: 2rem;
+    font-weight: 500;
 }
+
+
 
 /* Footer */
 footer {
@@ -512,8 +566,7 @@ footer {
     left: 0;
 }
 
-/* Media Queries */
-@media (max-width: 992px) {
+@media screen and (max-width: 1200px) {
     header {
         width: 22rem;
     }
@@ -525,14 +578,40 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 992px) {
     html {
-        font-size: 56.25%;
+        font-size: 56.25%; 
+    }
+    
+    header {
+        width: 20rem;
+        padding: 2rem;
+    }
+    
+    main {
+        margin-left: 20rem;
+        width: calc(100% - 20rem);
+        padding: 2rem;
+    }
+    
+    .container, .energy-use {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 50%; 
     }
     
     header {
         transform: translateX(-100%);
         width: 28rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease;
     }
     
     header.active {
@@ -542,12 +621,23 @@ footer {
     main {
         margin-left: 0;
         width: 100%;
+        padding: 2rem 1rem;
+    }
+    
+    .container, .energy-use {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .chart-container {
+        flex-direction: column;
+        height: auto;
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     html {
-        font-size: 50%;
+        font-size: 45%; 
     }
     
     header {
@@ -555,6 +645,50 @@ footer {
     }
     
     main {
-        padding: 2rem 1.5rem;
+        padding: 1rem;
+    }
+    
+    .Title {
+        font-size: 3rem;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box-energy h3, 
+    .box-solar h3, 
+    .box-grid h3 {
+        font-size: 1.8rem;
+    }
+    
+    .box-energy p, 
+    .box-solar p, 
+    .box-grid p {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 0.8rem;
+    }
+}
+
+@supports not (grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))) {
+    .container, .energy-use {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .container > div, .energy-use > div {
+        flex: 0 1 calc(33.333% - 2rem);
+        margin: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 1.4rem;
     }
 }
