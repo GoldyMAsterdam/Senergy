@@ -149,38 +149,58 @@
             <div class="peak-demand-grid">
                 <h1>Peak Demand</h1>
 
-                <svg class="svg-1"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"><circle cx="50" cy="50" r="25" fill="#2D3341" /><circle cx="50" cy="50" r="17" fill="#1E88E5" /><text x="50" y="57" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">1</text> </svg>  
-                <h2 class="Today">Today's Peak</h2>
+                <div class="energy-stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 17h-2v-6h-2v-2h4v8zm-1-15A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"/></svg>
+                </div>                <h2 class="Today">Today's Peak</h2>
                 <h3 style="margin-right: 34rem;">4.2<span style="font-size: 1.6rem; color: var(--text-secondary);"> kW</span></h3>
                 
-                <svg class="svg-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"><circle cx="50" cy="150" r="25" fill="#2D3341" /> <circle cx="50" cy="150" r="18" stroke="#1E88E5" stroke-width="2.5" fill="none" /><line x1="50" y1="150" x2="50" y2="138" stroke="#1E88E5" stroke-width="2.5" stroke-linecap="round" /><line x1="50" y1="150" x2="58" y2="155" stroke="#1E88E5" stroke-width="2.5" stroke-linecap="round" /></svg>
-                <h2 class="Time">Time of Peak</h2>
+                <div class="energy-stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+                </div>                <h2 class="Time">Time of Peak</h2>
                 <h3 style="margin-right: 31rem;">14:30<span style="font-size: 1.6rem; color: var(--text-secondary);"> pm</span></h3>
                 
-                <svg class="svg-average"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300"> <circle cx="50" cy="250" r="25" fill="#2D3341" /><polyline points="35,250 43,240 50,255 65,245" stroke="#1E88E5" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                <h2 class="Weekly">Weekly Average</h2>
+                <div class="energy-stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.55 19.09L4.96 20.5 9.73 15.73 14.5 20.5 21 14 19.59 12.59 14.5 17.68 9.73 12.91 3.55 19.09M21 8.94L19.59 7.53 14.5 12.62 9.73 7.85 4.96 12.62 3.55 11.21 9.73 5.03 14.5 9.8 21 3.3"/></svg>
+                </div>             <h2 class="Weekly">Weekly Average</h2>
                 <h3 style="margin-right: 34rem;">3.8<span style="font-size: 1.6rem; color: var(--text-secondary);"> kW</span></h3>
+                
+                <!-- Later aan werken -->
+                <svg class="energy-graph" viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <path class="energy-graph-area" d="M0,100 L0,80 C20,75 40,85 60,70 C80,55 100,60 120,50 C140,40 160,45 180,25 C200,5 220,15 240,30 C260,45 280,35 300,40 L300,100 Z"></path>
+                    <path class="energy-graph-line" d="M0,80 C20,75 40,85 60,70 C80,55 100,60 120,50 C140,40 160,45 180,25 C200,5 220,15 240,30 C260,45 280,35 300,40"></path>
+                </svg>
+
             </div>
 
             <div class="self-use-grid">
                 <h1>Self-Sufficiency</h1>
 
-                <svg class="svg-cons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                    <circle cx="47.5" cy="50" r="25" fill="#2D3341"/>
-                    <g transform="translate(30, 30) scale(1.5)">
-                        <path fill="#1E88E5" d="M21.7,10.3l-9-8c-0.4-0.3-0.9-0.3-1.3,0l-9,8c-0.4,0.4-0.5,1-0.1,1.4s1,0.5,1.4,0.1L4,11.4V21c0,0.6,0.4,1,1,1h14c0.6,0,1-0.4,1-1v-9.6l0.3,0.3c0.4,0.4,1,0.3,1.4-0.1C22.1,11.3,22.1,10.6,21.7,10.3z M12,11c1.5,0,2.7,1.2,2.7,2.7c0,1.5-1.2,2.7-2.7,2.7c-1.5,0-2.7-1.2-2.7-2.7S10.5,11,12,11z M7,20c0-0.1,0-0.1,0.1-0.2c2.2-2.7,6.2-3.2,8.9-1c0.4,0.3,0.7,0.6,1,1c0,0,0,0.1,0.1,0.2H7z"/>
-                    </g>
-                </svg>
+                <div class="energy-stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,3L2,12H5V20H19V12H22L12,3M12,8.75A2.25,2.25 0 0,1 14.25,11A2.25,2.25 0 0,1 12,13.25A2.25,2.25 0 0,1 9.75,11A2.25,2.25 0 0,1 12,8.75M12,15C13.5,15 16.5,15.75 16.5,17.25V18H7.5V17.25C7.5,15.75 10.5,15 12,15Z"/></svg>
+                </div>
                 <h2>Self-Consumption</h2>
                 <h3 style="margin-right: 39.5rem;">78<span class="arg"> %</span></h3>
 
-                    <svg class="svg-bat"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2D3341"><circle cx="12" cy="12" r="12" fill="#"/> <path d="M14.5 11.5H12.5V8L9.5 13.5H11.5V17L14.5 11.5Z" fill="#3a86ff"/><rect x="7" y="4" width="10" height="16" rx="2" ry="2" fill="none" stroke="#3a86ff" stroke-width="1"/></svg>
+
+                <div class="energy-stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11,6H13V13H11V6M9,20A1,1 0 0,1 8,19V5A1,1 0 0,1 9,4H15A1,1 0 0,1 16,5V19A1,1 0 0,1 15,20H9M15,2H9A3,3 0 0,0 6,5V19A3,3 0 0,0 9,22H15A3,3 0 0,0 18,19V5A3,3 0 0,0 15,2Z"/></svg>
+                </div>
                 <h2 style="margin-right: 33rem; margin-top: 2.5rem;">Battery Usage</h2>
                 <h3 style="margin-right: 36rem;">5.8<span class="arg"> kWh</span></h3>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.06.34-.14.67-.24 1H13v-1zm0 3h6.13c-.33.67-.76 1.29-1.25 1.83-.16.18-.33.34-.51.5H13v-2.33z"/></svg>
 
-                    
+                    <div class="energy-stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.06.34-.14.67-.24 1H13v-1zm0 3h6.13c-.33.67-.76 1.29-1.25 1.83-.16.18-.33.34-.51.5H13v-2.33z"/></svg>
+                    </div>
                 <h2 style="margin-right: 29rem; margin-top: 2.5rem;">Grid Independence</h2>
                 <h3 style="margin-right: 40rem;">91<span class="arg"> %</span></h3>
+
+
+                <!-- Later aan werken  -->
+                <!-- <svg class="energy-graph" viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <path class="energy-graph-area" d="M0,100 L0,60 C20,55 40,50 60,45 C80,40 100,30 120,35 C140,40 160,20 180,15 C200,10 220,15 240,20 C260,25 280,15 300,10 L300,100 Z"></path>
+                    <path class="energy-graph-line" d="M0,60 C20,55 40,50 60,45 C80,40 100,30 120,35 C140,40 160,20 180,15 C200,10 220,15 240,20 C260,25 280,15 300,10"></path>
+                </svg> -->
             </div>
         </article>
     </main>

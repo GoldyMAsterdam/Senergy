@@ -346,9 +346,9 @@ main > section#dataDisplay {
 }
 
 .line {
-    margin-top: 6rem;
-    margin-left: 1rem;
-    width: 72%;
+    top: 17%;
+    margin-left: 3rem;
+    width: 95%;
     height: 1%;
     position: absolute;
     background-color: var(--transparent);
