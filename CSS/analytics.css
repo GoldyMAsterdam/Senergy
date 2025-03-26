@@ -346,9 +346,9 @@ main > section#dataDisplay {
 }
 
 .line {
-    margin-top: 6rem;
-    margin-left: 1rem;
-    width: 72%;
+    top: 17%;
+    margin-left: 3rem;
+    width: 95%;
     height: 1%;
     position: absolute;
     background-color: var(--transparent);
@@ -573,16 +573,16 @@ main > section#dataDisplay {
 
 .svg-cons {
     top: 107%;
-    width: 12rem;
-    height: 12rem;
-    right: 58.5rem;
+    width: 9rem;
+    height: 9rem;
+    right: 59.5rem;
 }
 
 .svg-bat {
-    top: 116%;
-    width: 7rem;
-    height: 6rem;
-    right: 60.8rem;
+    top: 115.8%;
+    width: 5rem;
+    height: 5rem;
+    right: 61.5rem;
 }
 
 
