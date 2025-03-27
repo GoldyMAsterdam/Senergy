@@ -227,29 +227,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Function to update wind speed, direction, humidity, rainfall, and UV index
     function updateAdditionalMetrics(data) {
         if (!data || !data.current) return;
         
-        // Update Wind Speed
         const windSpeedElement = document.querySelector('.dashboardcard-WindSpeed h2');
         if (windSpeedElement) {
             windSpeedElement.textContent = `${data.current.wind_kph} KM/H`;
         }
         
-        // Update Wind Direction
         const windDirectionElement = document.querySelector('.dashboardcard-WindSpeed p');
         if (windDirectionElement) {
             windDirectionElement.textContent = `${data.current.wind_degree}° ${data.current.wind_dir}`;
         }
         
-        // Update Humidity
         const humidityElement = document.querySelector('.dashboardcard-Humidity h2');
         const humidityStatusElement = document.querySelector('.dashboardcard-Humidity p');
         if (humidityElement) {
             humidityElement.textContent = `${data.current.humidity}%`;
             
-            // Add humidity status description
             if (humidityStatusElement) {
                 if (data.current.humidity < 30) {
                     humidityStatusElement.textContent = 'Very dry';
@@ -263,13 +258,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Update UV Index
         const uvIndexElement = document.querySelector('.dashboardcard-UV-Index h2');
         const uvStatusElement = document.querySelector('.dashboardcard-UV-Index p');
         if (uvIndexElement && uvStatusElement) {
             uvIndexElement.textContent = data.current.uv;
             
-            // Set UV index description
             if (data.current.uv <= 2) {
                 uvStatusElement.textContent = 'Low UV';
             } else if (data.current.uv <= 5) {
@@ -283,27 +276,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Update Rainfall
         const rainfallElement = document.querySelector('.dashboardcard-Rainfall h2');
         if (rainfallElement) {
             rainfallElement.textContent = `${data.current.precip_mm} mm`;
         }
     }
     
-    // Function to update sunrise and sunset times
     function updateSunriseSunset(data) {
         if (!data || !data.forecast || !data.forecast.forecastday || !data.forecast.forecastday.length === 0) return;
         
         const today = data.forecast.forecastday[0];
         if (!today || !today.astro) return;
         
-        // Update Sunrise
         const sunriseElement = document.querySelector('.dashboardcard-Sunrise h2');
         if (sunriseElement && today.astro.sunrise) {
             sunriseElement.textContent = today.astro.sunrise;
         }
         
-        // Update Sunset
         const sunsetElement = document.querySelector('.dashboardcard-Sunset h2');
         if (sunsetElement && today.astro.sunset) {
             sunsetElement.textContent = today.astro.sunset;
@@ -315,207 +304,184 @@ document.addEventListener('DOMContentLoaded', function() {
     let weatherData = null;
     let forecastData = null;
     
-    // Function to fetch weather data for a specific location
-// Function to fetch weather data for a specific location
-function fetchWeatherData(city) {
-    const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
-    const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`;
-    
-    // Update the selected location display
-    const selectedLocationSpan = document.getElementById('selected-location');
-    if (selectedLocationSpan) {
-        selectedLocationSpan.textContent = city;
-    }
-    
-    // Fetch current weather data
-    fetch(weatherUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('City not found');
+    function fetchWeatherData(city) {
+        const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+        const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`;
+        
+        const selectedLocationSpan = document.getElementById('selected-location');
+        if (selectedLocationSpan) {
+            selectedLocationSpan.textContent = city;
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Current Weather Data:', data);
-        weatherData = data;
         
-        const temperatureElement = document.querySelector('main h3');
-        const feelsLikeElement = document.querySelector('main h4');
-        const conditionElement = document.getElementById('weather-condition');
-        const weatherIconElement = document.querySelector('main img[alt="Weather Icon"]');
-        
-        if (temperatureElement && feelsLikeElement) {
-            const temperature = Math.round(data.current.temp_c);
-            const feelsLike = Math.round(data.current.feelslike_c);
-            const condition = data.current.condition.text;
-            
-            updateTemperatureDisplay(currentUnit);
-            
-            if (conditionElement) {
-                conditionElement.textContent = condition;
+        fetch(weatherUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('City not found');
             }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Current Weather Data:', data);
+            weatherData = data;
             
-            if (weatherIconElement) {
-                weatherIconElement.src = `IMG/${getWeatherIcon(condition)}`;
-                weatherIconElement.alt = condition;
-            }
-        }
-        
-        updateAdditionalMetrics(data);
-    })
-    .catch(error => {
-        console.error('Error fetching weather data:', error);
-        alert('City not found. Please try again.');
-    });
-    
-    // Fetch forecast data
-    fetch(forecastUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('City not found');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Forecast Data:', data);
-        forecastData = data;
-        
-        // Update location information
-        const locationElement = document.getElementById('location-name');
-        if (locationElement && data.location) {
-            locationElement.textContent = `${data.location.name}, ${data.location.country}`;
-        }
-        
-        // Update sunrise and sunset information
-        updateSunriseSunset(data);
-        
-        // Update hourly forecast
-        updateHourlyForecast(currentUnit);
-        
-        // Update weekly forecast
-        updateWeeklyForecast(currentUnit);
-    })
-    .catch(error => {
-        console.error('Error fetching forecast data:', error);
-    });
-}
-
-// Initialize with default city
-fetchWeatherData(currentCity);
-
-// Search functionality
-const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-
-if (searchForm && searchInput) {
-    searchForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const searchCity = searchInput.value.trim();
-        
-        if (searchCity) {
-            currentCity = searchCity;
-            fetchWeatherData(currentCity);
-            searchInput.value = '';
-        }
-    });
-}
-
-// Function to handle geolocation
-const locationButton = document.getElementById('location-button');
-
-if (locationButton) {
-    locationButton.addEventListener('click', function() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                // Success callback
-                function(position) {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    currentCity = `${lat},${lon}`;
-                    fetchWeatherData(currentCity);
-                },
-                // Error callback
-                function(error) {
-                    console.error('Geolocation error:', error);
-                    alert('Unable to get your location. Please check your browser settings.');
+            const temperatureElement = document.querySelector('main h3');
+            const feelsLikeElement = document.querySelector('main h4');
+            const conditionElement = document.getElementById('weather-condition');
+            const weatherIconElement = document.querySelector('main img[alt="Weather Icon"]');
+            
+            if (temperatureElement && feelsLikeElement) {
+                const temperature = Math.round(data.current.temp_c);
+                const feelsLike = Math.round(data.current.feelslike_c);
+                const condition = data.current.condition.text;
+                
+                updateTemperatureDisplay(currentUnit);
+                
+                if (conditionElement) {
+                    conditionElement.textContent = condition;
                 }
-            );
-        } else {
-            alert('Geolocation is not supported by your browser.');
-        }
-    });
-}
-
-// Location picker modal functionality
-const modal = document.getElementById('location-modal');
-const locationPickerBtn = document.getElementById('location-picker-btn');
-const closeBtn = document.querySelector('.close-btn');
-const selectedLocationSpan = document.getElementById('selected-location');
-const locationItems = document.querySelectorAll('.location-item');
-const locationSearch = document.getElementById('location-search');
-
-// Open the modal when clicking the location picker button
-if (locationPickerBtn) {
-    locationPickerBtn.onclick = function() {
-        if (modal) {
-            modal.style.display = 'flex';
-        }
-    };
-}
-
-// Close the modal when clicking the X button
-if (closeBtn) {
-    closeBtn.onclick = function() {
-        if (modal) {
-            modal.style.display = 'none';
-        }
-    };
-}
-
-// Close the modal when clicking outside the modal content
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-};
-
-// Handle location item clicks
-if (locationItems) {
-    locationItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const locationName = this.getAttribute('data-location');
-            if (selectedLocationSpan) {
-                selectedLocationSpan.textContent = locationName;
+                
+                if (weatherIconElement) {
+                    weatherIconElement.src = `IMG/${getWeatherIcon(condition)}`;
+                    weatherIconElement.alt = condition;
+                }
             }
             
+            updateAdditionalMetrics(data);
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            alert('City not found. Please try again.');
+        });
+        
+        fetch(forecastUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('City not found');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Forecast Data:', data);
+            forecastData = data;
+            
+            const locationElement = document.getElementById('location-name');
+            if (locationElement && data.location) {
+                locationElement.textContent = `${data.location.name}, ${data.location.country}`;
+            }
+            
+            updateSunriseSunset(data);
+            updateHourlyForecast(currentUnit);
+            updateWeeklyForecast(currentUnit);
+        })
+        .catch(error => {
+            console.error('Error fetching forecast data:', error);
+        });
+    }
+
+    fetchWeatherData(currentCity);
+
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+
+    if (searchForm && searchInput) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchCity = searchInput.value.trim();
+            
+            if (searchCity) {
+                currentCity = searchCity;
+                fetchWeatherData(currentCity);
+                searchInput.value = '';
+            }
+        });
+    }
+
+    const locationButton = document.getElementById('location-button');
+
+    if (locationButton) {
+        locationButton.addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        currentCity = `${lat},${lon}`;
+                        fetchWeatherData(currentCity);
+                    },
+                    function(error) {
+                        console.error('Geolocation error:', error);
+                        alert('Unable to get your location. Please check your browser settings.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+    }
+
+    const modal = document.getElementById('location-modal');
+    const locationPickerBtn = document.getElementById('location-picker-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const selectedLocationSpan = document.getElementById('selected-location');
+    const locationItems = document.querySelectorAll('.location-item');
+    const locationSearch = document.getElementById('location-search');
+
+    if (locationPickerBtn) {
+        locationPickerBtn.onclick = function() {
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        };
+    }
+
+    if (closeBtn) {
+        closeBtn.onclick = function() {
             if (modal) {
                 modal.style.display = 'none';
             }
-            
-            // Update weather data based on selected location
-            currentCity = locationName;
-            fetchWeatherData(currentCity);
-            console.log(`Location changed to: ${locationName}`);
-        });
-    });
-}
+        };
+    }
 
-// Filter locations based on search input
-if (locationSearch) {
-    locationSearch.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        
-        if (locationItems) {
-            locationItems.forEach(item => {
-                const locationName = item.querySelector('span').textContent.toLowerCase();
-                
-                if (locationName.includes(searchTerm)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
         }
-    });
-}
+    };
+
+    if (locationItems) {
+        locationItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const locationName = this.getAttribute('data-location');
+                if (selectedLocationSpan) {
+                    selectedLocationSpan.textContent = locationName;
+                }
+                
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+                
+                currentCity = locationName;
+                fetchWeatherData(currentCity);
+                console.log(`Location changed to: ${locationName}`);
+            });
+        });
+    }
+
+    if (locationSearch) {
+        locationSearch.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            if (locationItems) {
+                locationItems.forEach(item => {
+                    const locationName = item.querySelector('span').textContent.toLowerCase();
+                    
+                    if (locationName.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        });
+    }
 });
