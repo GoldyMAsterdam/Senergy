@@ -763,6 +763,7 @@ main > section#dataDisplay {
 
 /* Begin Weerverwachting Grid */
 .weerverwachting-grid {
+    display: flex;
     background-color: var(--sidebar-bg);
     border-radius: var(--border-radius);
     padding: 3rem;
@@ -1041,5 +1042,15 @@ footer {
     .buitentemperatuur-grid > .container > img {
         width: 8rem;
         height: 8rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .dashboard-container {
+        margin-left: 3rem;
+    }
+
+    .weerverwachting-grid {
+        margin-left: 88rem;
     }
 }
