@@ -13,6 +13,7 @@
     --text-muted: #676b73;
     --accent: #3a86ff;
     --accent-hover: #2a76ef;
+    --accent-mixed: rgba(58, 134, 255, 0.1);
     --green: #4cd964;
     --orange: #ff9500;
     --red: #ff3b30;
@@ -117,7 +118,7 @@ header > ul > li > a > svg {
     transition: var(--transition);
 }
 
-/* Navigation animations */
+/* Navigation */
 header > ul > li:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
@@ -180,7 +181,7 @@ main > section#dataDisplay {
     margin-bottom: 3rem;
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 1.2rem;
     background-color: black;
@@ -471,94 +472,118 @@ main > section#dataDisplay {
     padding: 2rem;
 }
 
-.peak-demand-grid {
+.peak-demand-grid, .self-use-grid {
     position: relative;
     overflow: hidden;
     margin-top: -2rem;
     padding: 2rem;
     background-color: var(--sidebar-bg);
     border-radius: var(--border-radius);
-    text-align: center;
+    text-align: left;
     width: 64rem;
-    height: 50vh;
+    height: 60vh;
     max-width: 100%;
     box-shadow: var(--shadow);
 }
 
-.self-use-grid {
-    position: relative;
-    overflow: hidden;
-    margin-top: -2rem;
-    padding: 2rem;
-    background-color: var(--sidebar-bg);
-    border-radius: var(--border-radius);
-    text-align: center;
-    width: 64rem;
-    height: 50vh;
-    max-width: 100%;
-    box-shadow: var(--shadow);
-}
-
-.peak-demand-grid > h1 {
+.peak-demand-grid > h1, .self-use-grid > h1 {
     font-size: 2.6rem;
     text-align: left;
     margin-left: 2rem;
     font-weight: 600;
+    margin-bottom: 3rem;
 }
 
+.stat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+    position: relative;
+}
 
-.peak-demand-grid > h2, .self-use-grid > h2 {
+.energy-stat-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    transition: var(--transition);
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+.energy-stat-icon:hover {
+    transform: scale(1.1);
+    background-color: rgba(58, 134, 255, 0.1);
+}
+
+.energy-stat-icon svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: var(--accent);
+    transition: var(--transition);
+}
+
+.energy-stat-icon:hover svg {
+    fill: var(--accent);
+    transform: rotate(5deg);
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.Today, .Weekly, .Time {
     font-size: 1.5rem;
     font-weight: 400;
-    margin-right: 35rem;
     color: var(--text-secondary);
 }
 
 .peak-demand-grid > h3, .self-use-grid > h3 {
     font-size: 2rem;
     font-weight: 500;
-    margin-left: -5rem;
-}
-
-.energy-stat-icon {
-    margin-left: 5rem;
-    margin-top: 2rem;
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--card-bg);
-}
-
-.Today, .Weekly, .Time {
-    margin-top: -5rem;
-}
-
-.energy-stat-icon svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    fill: var(--accent);
-}
-
-
-.self-use-grid > h1 {
-    font-size: 2.6rem;
-    text-align: left;
-    margin-left: 2rem;
-    font-weight: 600;
-}
-
-.self-use-grid > h2 {
-    margin-top: 1rem;
+    color: var(--text-primary);
 }
 
 .arg {
     color: var(--text-secondary);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin-left: 0.3rem;
 }
 
+.stat-content h2 {
+    margin-top: -0.5rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-content h3 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.energy-graph {
+    position: absolute;
+    top: 65%;
+    width: 94%;
+    height: 30%;
+}
+
+.energy-graph-area {
+    fill: var(--accent-mixed);
+}
+
+.energy-graph-line {
+    stroke: var(--accent);
+    stroke-width: 2;
+    fill: none;
+}
 
 /* Footer */
 footer {
@@ -639,6 +664,27 @@ footer {
     .chart-container {
         flex-direction: column;
         height: auto;
+    }
+
+    .peak-demand-grid, .self-use-grid {
+        width: 100%;
+        height: auto;
+        min-height: 40rem;
+    }
+
+    .stat-item {
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .energy-stat-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .energy-stat-icon svg {
+        width: 2rem;
+        height: 2rem;
     }
 }
 
