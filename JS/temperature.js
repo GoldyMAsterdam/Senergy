@@ -15,8 +15,20 @@ function updateTemperature() {
 
 setInterval(updateTemperature, 5000);
 
+const lightToggle = document.getElementById('light-toggle');
 const lightStatusDot = document.getElementById('light-status-dot');
 const lightStatusText = document.getElementById('light-status-text');
+
+lightToggle.addEventListener('change', function() {
+    if (this.checked) {
+        lightStatusDot.classList.add('on');
+        lightStatusText.textContent = 'Turned On';
+    } else {
+        lightStatusDot.classList.remove('on');
+        lightStatusText.textContent = 'Turned Off';
+    }
+});
+
 const lightToggleBtn = document.getElementById('light-toggle-btn');
 let isLightOn = false;
 
