@@ -434,7 +434,6 @@ main > section#dataDisplay {
 .chart-text-item, .chart-text-item-2 {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
     padding: 0.8rem 1.2rem;
     background-color: var(--card-bg);
     border-radius: 0.8rem;
@@ -451,11 +450,8 @@ main > section#dataDisplay {
 }
 
 .chart-consumption-svg, .chart-production-svg {
-    width: 2rem !important;
-    height: 2rem !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: 2rem;
+    height: 2rem;
 }
 
 .chart-consumption-svg circle {
