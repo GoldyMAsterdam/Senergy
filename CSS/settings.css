@@ -21,6 +21,43 @@
     --transition: all 0.3s ease;
 }
 
+/* Light theme */
+[data-theme="light"] {
+    --primary-bg: #f5f7fa;
+    --sidebar-bg: #ffffff;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #8a8a8a;
+    --accent: #3a86ff;
+    --accent-hover: #2a76ef;
+    --shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+    [data-theme="system"] {
+        --primary-bg: #f5f7fa;
+        --sidebar-bg: #ffffff;
+        --card-bg: rgba(0, 0, 0, 0.05);
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a4a4a;
+        --text-muted: #8a8a8a;
+        --shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme="system"] {
+        --primary-bg: #060c1a;
+        --sidebar-bg: #0e1421;
+        --card-bg: rgba(255, 255, 255, 0.08);
+        --text-primary: #ffffff;
+        --text-secondary: #a0a4ad;
+        --text-muted: #676b73;
+        --shadow: 0 4px 9px rgba(0, 0, 0, 0.25);
+    }
+}
+
 html, body {
     height: 100%;
     font-family: "Poppins", sans-serif;
@@ -118,7 +155,7 @@ header > ul > li > a > svg {
     transition: var(--transition);
 }
 
-/* Navigation animations */
+/* Navigation anim */
 header > ul > li:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
@@ -181,7 +218,7 @@ main > section#dataDisplay {
     margin-bottom: 3rem;
 }
 
-/* Scrollbar styling */
+/* Scrollbar styles */
 ::-webkit-scrollbar {
     width: 1.2rem;
     background-color: black;
@@ -198,8 +235,6 @@ main > section#dataDisplay {
     background-color: var(--accent);
     border: 3px solid var(--sidebar-bg);
 }
-
-
 
 /* Footer */
 footer {
@@ -262,5 +297,166 @@ footer {
     
     main {
         padding: 2rem 1.5rem;
+    }
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.settings-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.settings-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.settings-card h3 i {
+    color: var(--accent);
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.input-group label {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+}
+
+.input-group input,
+.input-group select {
+    padding: 1rem;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    transition: var(--transition);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--card-bg);
+}
+
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.toggle-group label {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+}
+
+/* Switch Toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 5rem;
+    height: 2.4rem;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: .4s;
+    border-radius: 2.4rem;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.8rem;
+    width: 1.8rem;
+    left: 0.3rem;
+    bottom: 0.3rem;
+    background-color: var(--text-secondary);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(2.6rem);
+    background-color: var(--text-primary);
+}
+
+/* Buttons */
+.btn-export,
+.btn-delete {
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.btn-export {
+    background: var(--accent);
+    color: var(--text-primary);
+}
+
+.btn-export:hover {
+    background: var(--accent-hover);
+}
+
+.btn-delete {
+    background: rgba(255, 59, 48, 0.1);
+    color: var(--red);
+    border: 1px solid var(--red);
+}
+
+.btn-delete:hover {
+    background: rgba(255, 59, 48, 0.2);
+}
+
+/* Media Queries for Settings */
+@media (max-width: 992px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
     }
 }

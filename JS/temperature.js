@@ -1,8 +1,7 @@
 function updateTemperature() {
-    const temperatures = [20.5, 21.0, 21.5, 22.0, 21.8];
-    const randomTemp = temperatures[Math.floor(Math.random() * temperatures.length)];
     const tempElement = document.getElementById('room-temperature');
     const currentTemp = parseFloat(tempElement.textContent);
+    const randomTemp = (Math.random() * (24 - 18) + 18).toFixed(1); // Random temp between 18 and 24
     
     tempElement.style.transform = 'scale(1.1)';
     tempElement.style.transition = 'transform 0.3s ease';
@@ -15,32 +14,20 @@ function updateTemperature() {
 
 setInterval(updateTemperature, 5000);
 
+const lightToggle = document.getElementById('light-toggle');
 const lightStatusDot = document.getElementById('light-status-dot');
 const lightStatusText = document.getElementById('light-status-text');
-const lightToggleBtn = document.getElementById('light-toggle-btn');
-let isLightOn = false;
+const lightStatus = document.querySelector('.light-status');
 
-lightToggleBtn.addEventListener('click', () => {
-    isLightOn = !isLightOn;
-    const icon = lightToggleBtn.querySelector('i');
-    
-    lightToggleBtn.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-        lightToggleBtn.style.transform = 'scale(1)';
-    }, 100);
-    
-    if (isLightOn) {
+lightToggle.addEventListener('change', function() {
+    if (this.checked) {
         lightStatusDot.classList.add('on');
-        lightStatusDot.classList.remove('off');
         lightStatusText.textContent = 'Turned On';
-        lightToggleBtn.innerHTML = '<i class="fas fa-power-off"></i><span>Toggle Light</span>';
-        icon.style.transform = 'rotate(180deg)';
+        lightStatus.classList.add('on');
     } else {
         lightStatusDot.classList.remove('on');
-        lightStatusDot.classList.add('off');
         lightStatusText.textContent = 'Turned Off';
-        lightToggleBtn.innerHTML = '<i class="fas fa-power-off"></i><span>Toggle Light</span>';
-        icon.style.transform = 'rotate(0deg)';
+        lightStatus.classList.remove('on');
     }
 });
 
@@ -51,27 +38,16 @@ const scheduleItems = document.getElementById('schedule-items');
 const scheduleForm = document.getElementById('schedule-form');
 const toggleScheduleForm = document.getElementById('toggle-schedule-form');
 
-scheduleForm.style.display = 'none';
-
 toggleScheduleForm.addEventListener('click', () => {
-    const isHidden = scheduleForm.style.display === 'none';
+    const isHidden = !scheduleForm.classList.contains('show');
     
     if (isHidden) {
         scheduleForm.style.display = 'block';
-        scheduleForm.style.opacity = '0';
-        scheduleForm.style.transform = 'translateY(-20px)';
-        
         scheduleForm.offsetHeight;
-        
-        scheduleForm.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        scheduleForm.style.opacity = '1';
-        scheduleForm.style.transform = 'translateY(0)';
-        
+        scheduleForm.classList.add('show');
         toggleScheduleForm.innerHTML = '<i class="fas fa-times"></i><span>Cancel</span>';
     } else {
-        scheduleForm.style.opacity = '0';
-        scheduleForm.style.transform = 'translateY(-20px)';
-        
+        scheduleForm.classList.remove('show');
         setTimeout(() => {
             scheduleForm.style.display = 'none';
             toggleScheduleForm.innerHTML = '<i class="fas fa-plus"></i><span>New Schedule</span>';
@@ -114,9 +90,7 @@ addScheduleBtn.addEventListener('click', () => {
         scheduleTimeInput.value = '';
         scheduleActionSelect.selectedIndex = 0;
         
-        scheduleForm.style.opacity = '0';
-        scheduleForm.style.transform = 'translateY(-20px)';
-        
+        scheduleForm.classList.remove('show');
         setTimeout(() => {
             scheduleForm.style.display = 'none';
             toggleScheduleForm.innerHTML = '<i class="fas fa-plus"></i><span>New Schedule</span>';
