@@ -376,6 +376,19 @@ main h2 {
     border-radius: var(--border-radius);
     border: 1px solid rgba(255, 255, 255, 0.05);
     margin-bottom: 3rem;
+    transform-origin: top;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+    pointer-events: none;
+    display: none;
+}
+
+.schedule-form.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: all;
+    display: block;
 }
 
 .schedule-inputs {
@@ -414,6 +427,48 @@ main h2 {
     transition: var(--transition);
     width: 100%;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 1.4rem center;
+    background-size: 1.6rem;
+    padding-right: 2rem;
+}
+
+.action-select select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a0a4ad' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.action-select select option {
+    background-color: var(--sidebar-bg);
+    color: var(--text-primary);
+    padding: 1.2rem;
+    font-size: 1.5rem;
+}
+
+.action-select select:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a90e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.action-select select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a90e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Clock in date input */
+.time-input input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.time-input input:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+.time-input input:focus::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    filter: invert(1) brightness(1.2);
 }
 
 .time-input input:hover, .action-select select:hover {
@@ -424,6 +479,41 @@ main h2 {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/*  Light on */
+.light-status.on .schedule-form {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-color: rgba(46, 204, 113, 0.2);
+}
+
+.light-status.on .schedule-inputs select,
+.light-status.on .schedule-inputs input {
+    background-color: rgba(46, 204, 113, 0.05);
+    border-color: rgba(46, 204, 113, 0.2);
+}
+
+.light-status.on .schedule-inputs select:hover,
+.light-status.on .schedule-inputs input:hover {
+    border-color: var(--green);
+}
+
+.light-status.on .schedule-inputs select:focus,
+.light-status.on .schedule-inputs input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+}
+
+.light-status.on .schedule-header h3 i {
+    color: var(--green);
+}
+
+.light-status.on .schedule-list h4 i {
+    color: var(--green);
+}
+
+.light-status.on .schedule-item-content i {
+    color: var(--green);
 }
 
 .schedule-list {
@@ -565,9 +655,9 @@ main h2 {
     }
 }
 
-/* Power Switch Styles */
+/* Switch */
 .power-switch {
-  --color-invert: #ffffff;
+  --color-invert: #ffff;
   --width: 150px;    
   --height: 150px;
   position: relative;

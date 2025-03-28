@@ -35,12 +35,11 @@
     </header>
 
     <main>
-        <h2><i class="fas fa-thermometer-half"></i> Temperature & Lighting Control</h2>
+        <h2>Temperature & Lighting Control</h2>
         
         <div class="temperature-grid">
             <div class="container">
                 <div class="current-temp">
-                    <i class="fas fa-temperature-high fa-2x"></i>
                     <h3>Current Room Temperature</h3>
                     <p id="room-temperature">21.5°C</p>
                     <div class="temp-range">
@@ -51,6 +50,7 @@
             </div>
             <div class="container">
                 <div class="light-status">
+                    <h3>House Light Status</h3>
                     <div class="power-switch">
                         <input type="checkbox" id="light-toggle" />
                         <div class="button">
@@ -75,7 +75,6 @@
                         </symbol>
                     </svg>
                     
-                    <h3>House Light Status</h3>
                     <div class="status-indicator">
                         <div class="status-dot" id="light-status-dot"></div>
                         <span id="light-status-text">Turned Off</span>
@@ -101,7 +100,7 @@
                                 <i class="fas fa-clock"></i>
                                 Time
                             </label>
-                            <input type="time" id="schedule-time">
+                            <input type="time" class="icon-time" id="schedule-time">
                         </div>
                         <div class="action-select">
                             <label for="schedule-action">
