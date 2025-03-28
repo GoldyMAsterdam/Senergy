@@ -21,12 +21,92 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Randomly placed media query */
+@media (max-width: 992px) {
+    .temperature-grid, .lighting-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .container {
+        padding: 2rem;
+        min-height: 25rem;
+    }
+    
+    .current-temp, .light-status {
+        padding: 2rem;
+    }
+    
+    .schedule-inputs {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .schedule-form {
+        padding: 2rem;
+    }
+    
+    #schedule-items li {
+        padding: 1.2rem;
+    }
+}
+
 html, body {
     height: 100%;
     font-family: "Poppins", sans-serif;
     font-size: 62.5%;
     background: var(--primary-bg);
     color: var(--text-primary);
+}
+
+/* Switch styles mixed in here */
+.power-switch {
+  --color-invert: #ffff;
+  --width: 150px;    
+  --height: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--width);
+  height: var(--height);
+}
+
+.power-switch .button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.power-switch .button:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: radial-gradient(circle closest-side, var(--color-invert), transparent);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: perspective(1px) translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* More switch styles */
+.power-switch .button .power-on,
+.power-switch .button .power-off {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  fill: none;
+  stroke: var(--color-invert);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 header {
@@ -61,6 +141,21 @@ header > h1 {
     letter-spacing: 0.3rem;
 }
 
+/* Even more switch styles */
+.power-switch .button .power-on .line,
+.power-switch .button .power-off .line {
+  opacity: .2;
+}
+
+.power-switch .button .power-on .circle,
+.power-switch .button .power-off .circle {
+  opacity: .2;
+  transform: rotate(-58deg);
+  transform-origin: center 80px;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 40;
+}
+
 header > ul {
     list-style: none;
     width: 100%;
@@ -68,6 +163,39 @@ header > ul {
     padding: 0 1.7rem; 
     display: flex;
     flex-direction: column;
+}
+
+/* Main content styles mixed in */
+main {
+    margin-left: 28rem;
+    padding: 4rem 5rem;
+    min-height: 100vh;
+    width: calc(100% - 28rem);
+    transition: var(--transition);
+}
+
+main h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* More switch styles */
+.power-switch .button .power-on {
+  filter: drop-shadow(0px 0px 6px rgba(255,255,255,.8));
+}
+
+.power-switch .button .power-on .line {
+  opacity: 0;
+  transition: opacity .3s ease 1s;
+}
+
+.power-switch .button .power-on .circle {
+  opacity: 1;
+  stroke-dashoffset: 220;
+  transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
 }
 
 header > ul > li {
@@ -80,6 +208,68 @@ header > ul > li {
     transition: var(--transition);
 }
 
+/* Grid layouts */
+.temperature-grid, .lighting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    max-width: 140rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Switch input styles */
+.power-switch input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.power-switch input:checked + .button:after {
+  opacity: 0.15;
+  transform: scale(2) perspective(1px) translateZ(0);
+  backface-visibility: hidden;
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+/* Container styles */
+.container {
+    background-color: var(--sidebar-bg);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* More switch animations */
+.power-switch input:checked + .button .power-on,
+.power-switch input:checked + .button .power-off {
+  animation: click-animation .3s ease forwards;
+  transform: scale(1);
+}
+
+.power-switch input:checked + .button .power-on .line,
+.power-switch input:checked + .button .power-off .line {
+  animation: line-animation .8s ease-in forwards;
+}
+
+.power-switch input:checked + .button .power-on .circle,
+.power-switch input:checked + .button .power-off .circle {
+  transform: rotate(302deg);
+}
+
+/* Header link styles */
 header > ul > li > a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -93,6 +283,80 @@ header > ul > li > a {
     border-radius: var(--border-radius-sm);
 }
 
+/* More switch states */
+.power-switch input:checked + .button .power-on .line {
+  opacity: 1;
+  transition: opacity .05s ease-in .55s;
+}
+
+.power-switch input:checked + .button .power-on .circle {
+  transform: rotate(302deg);
+  stroke-dashoffset: 40;
+  transition: transform .4s ease .2s, stroke-dashoffset .4s ease .2s;
+}
+
+/* Container before element */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    opacity: 0.5;
+}
+
+/* Switch animations */
+@keyframes line-animation {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform: translateY(-25px);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes click-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Temperature and light status styles */
+.current-temp, .light-status {
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    height: 100%;
+    justify-content: center;
+}
+
+/* Header icons */
 header > ul > li > a > i {
     font-size: 2rem;
 }
@@ -112,6 +376,7 @@ header > ul > li > a > svg {
     transition: var(--transition);
 }
 
+/* Hover states */
 header > ul > li:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
@@ -140,72 +405,7 @@ header > ul > li > a.active > svg {
     fill: var(--text-primary);
 }
 
-main {
-    margin-left: 28rem;
-    padding: 4rem 5rem;
-    min-height: 100vh;
-    width: calc(100% - 28rem);
-    transition: var(--transition);
-}
-
-main h2 {
-    font-size: 2.8rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: var(--text-primary);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.temperature-grid, .lighting-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
-    max-width: 140rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.container {
-    background-color: var(--sidebar-bg);
-    border-radius: var(--border-radius);
-    padding: 3rem;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    min-height: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-    opacity: 0.5;
-}
-
-.current-temp, .light-status {
-    background-color: var(--card-bg);
-    padding: 3rem;
-    border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    height: 100%;
-    justify-content: center;
-}
-
+/* Status indicators */
 .current-temp i, .light-status i {
     font-size: 3.2rem;
     margin-bottom: 1.5rem;
@@ -226,7 +426,6 @@ main h2 {
     font-size: 1.2rem;
 }
 
-
 .current-temp p {
     font-size: 4.8rem;
     font-weight: 700;
@@ -240,6 +439,7 @@ main h2 {
     color: var(--text-muted);
 }
 
+/* Status indicator styles */
 .status-indicator {
     display: flex;
     align-items: center;
@@ -265,6 +465,7 @@ main h2 {
     box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
 }
 
+/* Control button styles */
 .control-btn {
     background-color: var(--card-bg);
     color: var(--text-primary);
@@ -370,6 +571,7 @@ main h2 {
     background-color: rgba(74, 144, 226, 0.1);
 }
 
+/* Schedule form styles */
 .schedule-form {
     background-color: var(--sidebar-bg);
     padding: 2.5rem;
@@ -436,25 +638,77 @@ main h2 {
 }
 
 .action-select select {
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.4rem;
+    border-radius: var(--border-radius);
+    font-size: 1.5rem;
+    transition: var(--transition);
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a0a4ad' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.4rem center;
+    background-size: 1.6rem;
+    padding-right: 2rem;
 }
 
 .action-select select option {
-    background-color: var(--sidebar-bg);
-    color: var(--text-primary);
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-primary) !important;
     padding: 1.2rem;
     font-size: 1.5rem;
 }
 
-.action-select select:hover {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a90e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+.action-select select:focus option:checked {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.action-select select option:hover {
+    background-color: var(--card-bg) !important;
+}
+
+.action-select select {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--sidebar-bg);
+}
+
+.action-select select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.action-select select::-webkit-scrollbar-track {
+    background: var(--sidebar-bg);
+}
+
+.action-select select::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 4px;
 }
 
 .action-select select:focus {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a90e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-color: var(--sidebar-bg) !important;
 }
 
-/* Clock in date input */
+.action-select select:active {
+    background-color: var(--sidebar-bg) !important;
+}
+
+.action-select select:focus option {
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.action-select select option:checked {
+    background-color: var(--accent) !important;
+    color: var(--text-primary) !important;
+}
+
 .time-input input::-webkit-calendar-picker-indicator {
     filter: invert(1);
     opacity: 0.5;
@@ -481,7 +735,7 @@ main h2 {
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-/*  Light on */
+/* Light on styles */
 .light-status.on .schedule-form {
     background-color: rgba(46, 204, 113, 0.1);
     border-color: rgba(46, 204, 113, 0.2);
@@ -516,6 +770,7 @@ main h2 {
     color: var(--green);
 }
 
+/* Schedule list styles */
 .schedule-list {
     margin-top: 3rem;
 }
@@ -623,217 +878,4 @@ main h2 {
 #schedule-items li button:hover {
     background-color: rgba(231, 76, 60, 0.1);
     opacity: 1;
-}
-
-@media (max-width: 992px) {
-    .temperature-grid, .lighting-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 1rem;
-    }
-    
-    .container {
-        padding: 2rem;
-        min-height: 25rem;
-    }
-    
-    .current-temp, .light-status {
-        padding: 2rem;
-    }
-    
-    .schedule-inputs {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .schedule-form {
-        padding: 2rem;
-    }
-    
-    #schedule-items li {
-        padding: 1.2rem;
-    }
-}
-
-/* Switch */
-.power-switch {
-  --color-invert: #ffff;
-  --width: 150px;    
-  --height: 150px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--width);
-  height: var(--height);
-}
-
-.power-switch .button {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.power-switch .button:after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: radial-gradient(circle closest-side, var(--color-invert), transparent);
-  filter: blur(20px);
-  opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
-  transform: perspective(1px) translateZ(0);
-  backface-visibility: hidden;
-}
-
-.power-switch .button .power-on,
-.power-switch .button .power-off {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  fill: none;
-  stroke: var(--color-invert);
-  stroke-width: 8px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.power-switch .button .power-on .line,
-.power-switch .button .power-off .line {
-  opacity: .2;
-}
-
-.power-switch .button .power-on .circle,
-.power-switch .button .power-off .circle {
-  opacity: .2;
-  transform: rotate(-58deg);
-  transform-origin: center 80px;
-  stroke-dasharray: 220;
-  stroke-dashoffset: 40;
-}
-
-.power-switch .button .power-on {
-  filter: drop-shadow(0px 0px 6px rgba(255,255,255,.8));
-}
-
-.power-switch .button .power-on .line {
-  opacity: 0;
-  transition: opacity .3s ease 1s;
-}
-
-.power-switch .button .power-on .circle {
-  opacity: 1;
-  stroke-dashoffset: 220;
-  transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
-}
-
-.power-switch input {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.power-switch input:checked + .button:after {
-  opacity: 0.15;
-  transform: scale(2) perspective(1px) translateZ(0);
-  backface-visibility: hidden;
-  transition: opacity .5s ease, transform .5s ease;
-}
-
-.power-switch input:checked + .button .power-on,
-.power-switch input:checked + .button .power-off {
-  animation: click-animation .3s ease forwards;
-  transform: scale(1);
-}
-
-.power-switch input:checked + .button .power-on .line,
-.power-switch input:checked + .button .power-off .line {
-  animation: line-animation .8s ease-in forwards;
-}
-
-.power-switch input:checked + .button .power-on .circle,
-.power-switch input:checked + .button .power-off .circle {
-  transform: rotate(302deg);
-}
-
-.power-switch input:checked + .button .power-on .line {
-  opacity: 1;
-  transition: opacity .05s ease-in .55s;
-}
-
-.power-switch input:checked + .button .power-on .circle {
-  transform: rotate(302deg);
-  stroke-dashoffset: 40;
-  transition: transform .4s ease .2s, stroke-dashoffset .4s ease .2s;
-}
-
-@keyframes line-animation {
-  0% {
-    transform: translateY(0);
-  }
-  10% {
-    transform: translateY(10px);
-  }
-  40% {
-    transform: translateY(-25px);
-  }
-  60% {
-    transform: translateY(-25px);
-  }
-  85% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes click-animation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@media (max-width: 992px) {
-    .temperature-grid, .lighting-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 1rem;
-    }
-    
-    .container {
-        padding: 2rem;
-        min-height: 25rem;
-    }
-    
-    .current-temp, .light-status {
-        padding: 2rem;
-    }
-    
-    .schedule-inputs {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .schedule-form {
-        padding: 2rem;
-    }
-    
-    #schedule-items li {
-        padding: 1.2rem;
-    }
 }

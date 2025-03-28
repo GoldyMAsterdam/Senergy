@@ -43,7 +43,6 @@ toggleScheduleForm.addEventListener('click', () => {
     
     if (isHidden) {
         scheduleForm.style.display = 'block';
-        // Force reflow
         scheduleForm.offsetHeight;
         scheduleForm.classList.add('show');
         toggleScheduleForm.innerHTML = '<i class="fas fa-times"></i><span>Cancel</span>';
@@ -91,7 +90,6 @@ addScheduleBtn.addEventListener('click', () => {
         scheduleTimeInput.value = '';
         scheduleActionSelect.selectedIndex = 0;
         
-        // Reset form state properly
         scheduleForm.classList.remove('show');
         setTimeout(() => {
             scheduleForm.style.display = 'none';

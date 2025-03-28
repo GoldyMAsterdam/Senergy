@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/settings.css">
     <script src="https://kit.fontawesome.com/d661eaf4bb.js" crossorigin="anonymous"></script>
+    <script src="../JS/settings.js" defer></script>
     <title>Senergy - Settings</title>
 </head>
 <body>
@@ -38,7 +39,114 @@
         Test
     </nav>
     <main>
-        <h1>WIP</h1>
+        <div>
+            <h2>Settings</h2>
+            <p id="current-time"></p>
+        </div>
+    <article>
+        <section id="dataDisplay">
+            <div class="settings-grid">
+                <!-- user settings -->
+                <div class="settings-card">
+                    <h3><i class="fas fa-user"></i> Profile Settings</h3>
+                    <div class="settings-content">
+                        <div class="input-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- notification  -->
+                <div class="settings-card">
+                    <h3><i class="fas fa-bell"></i> Notification Settings</h3>
+                    <div class="settings-content">
+                        <div class="toggle-group">
+                            <label>Email Notifications</label>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-group">
+                            <label>Temperature Alerts</label>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-group">
+                            <label>Energy Usage Reports</label>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- display -->
+                <div class="settings-card">
+                    <h3><i class="fas fa-palette"></i> Display Preferences</h3>
+                    <div class="settings-content">
+                        <div class="input-group">
+                            <label for="theme">Theme</label>
+                            <select id="theme">
+                                <option value="light">Light</option>
+                                <option value="dark" selected>Dark</option>
+                                <option value="system">System Default</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="language">Language</label>
+                            <select id="language">
+                                <option value="en">English</option>
+                                <option value="nl">Dutch</option>
+                                <option value="de">German</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="timezone">Timezone</label>
+                            <select id="timezone">
+                                <option value="UTC">UTC</option>
+                                <option value="CET">Central European Time</option>
+                                <option value="EET">Eastern European Time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- data management -->
+                <div class="settings-card">
+                    <h3><i class="fas fa-database"></i> Data Management</h3>
+                    <div class="settings-content">
+                        <div class="input-group">
+                            <label>Data Period</label>
+                            <select id="retention">
+                                <option value="30">30 days</option>
+                                <option value="90">90 days</option>
+                                <option value="180">180 days</option>
+                                <option value="365">1 year</option>
+                            </select>
+                        </div>
+                        <button class="btn-export">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                        <button class="btn-delete">
+                            <i class="fas fa-trash"></i> Delete All Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>
