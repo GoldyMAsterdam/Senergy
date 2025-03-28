@@ -91,9 +91,8 @@ addScheduleBtn.addEventListener('click', () => {
         scheduleTimeInput.value = '';
         scheduleActionSelect.selectedIndex = 0;
         
-        scheduleForm.style.opacity = '0';
-        scheduleForm.style.transform = 'translateY(-20px)';
-        
+        // Reset form state properly
+        scheduleForm.classList.remove('show');
         setTimeout(() => {
             scheduleForm.style.display = 'none';
             toggleScheduleForm.innerHTML = '<i class="fas fa-plus"></i><span>New Schedule</span>';

@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senergy - Temperature & Lighting</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/Temperature.css">
+    <script src="../JS/temperature.js" defer></script>
+    <title>Senergy - Temperature</title>
 </head>
 <body>
     <header>
         <img src="../IMG/PNGLOGO.png" alt="Senergy Logo">
         <h1>Senergy</h1>
         <ul>
-            <li><a href="../index.html">
+            <li><a href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="grid"><rect width="24" height="24" opacity="0"></rect><path d="M9 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path><path d="M19 3h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path><path d="M9 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"></path><path d="M19 13h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"></path></g></g></svg>
             <span>Dashboard</span>
             </a></li>
@@ -33,7 +34,6 @@
             </a></li>
         </ul>
     </header>
-
     <main>
         <h2>Temperature & Lighting Control</h2>
         
@@ -50,7 +50,9 @@
             </div>
             <div class="container">
                 <div class="light-status">
-                    <h3>House Light Status</h3>
+                    <h3>Light Status</h3>
+
+                    <!-- Copy paste uit code pen -->
                     <div class="power-switch">
                         <input type="checkbox" id="light-toggle" />
                         <div class="button">
@@ -74,15 +76,17 @@
                             <circle cx="75" cy="80" r="35"/>
                         </symbol>
                     </svg>
-                    
+                    <!-- END -->
+
                     <div class="status-indicator">
-                        <div class="status-dot" id="light-status-dot"></div>
+                        <div class="status-circle" id="light-circle-dot"></div>
                         <span id="light-status-text">Turned Off</span>
                     </div>
                 </div>
             </div>
         </div>
 
+    <article>
         <div class="lighting-grid">
             <div class="container schedule-control">
                 <div class="schedule-header">
@@ -133,8 +137,7 @@
                 </div>
             </div>
         </div>
+    </article>
     </main>
-
-    <script src="../JS/temperature.js"></script>
 </body>
 </html>

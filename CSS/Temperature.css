@@ -251,7 +251,7 @@ main h2 {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.status-dot {
+.status-circle {
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 50%;
@@ -260,7 +260,7 @@ main h2 {
     transition: var(--transition);
 }
 
-.status-dot.on {
+.status-circle.on {
     background-color: var(--green);
     box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
 }
