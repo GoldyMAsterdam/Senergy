@@ -28,25 +28,25 @@
         gap: 2rem;
         padding: 0 1rem;
     }
-    
+
     .container {
         padding: 2rem;
         min-height: 25rem;
     }
-    
+
     .current-temp, .light-status {
         padding: 2rem;
     }
-    
+
     .schedule-inputs {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .schedule-form {
         padding: 2rem;
     }
-    
+
     #schedule-items li {
         padding: 1.2rem;
     }
@@ -63,7 +63,7 @@ html, body {
 /* Switch styles mixed in here */
 .power-switch {
   --color-invert: #ffff;
-  --width: 150px;    
+  --width: 150px;
   --height: 150px;
   position: relative;
   display: flex;
@@ -160,7 +160,7 @@ header > ul {
     list-style: none;
     width: 100%;
     gap: 0.8rem;
-    padding: 0 1.7rem; 
+    padding: 0 1.7rem;
     display: flex;
     flex-direction: column;
 }
@@ -380,27 +380,27 @@ header > ul > li > a > svg {
 header > ul > li:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
-  
+
 header > ul > li:hover > a {
     color: var(--text-primary);
 }
-  
+
 header > ul > li:hover > a::before {
     width: 100%;
 }
-  
+
 header > ul > li:hover > a > svg {
     fill: var(--accent);
     transform: scale(1.1) rotate(5deg);
 }
-  
+
 header > ul > li > a.active {
     border-radius: var(--border-radius);
     background-color: var(--accent);
     color: var(--text-primary);
     box-shadow: 0 4px 8px rgba(58, 134, 255, 0.3);
 }
-  
+
 header > ul > li > a.active > svg {
     fill: var(--text-primary);
 }

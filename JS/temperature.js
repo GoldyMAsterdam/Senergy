@@ -2,10 +2,10 @@ function updateTemperature() {
     const tempElement = document.getElementById('room-temperature');
     const currentTemp = parseFloat(tempElement.textContent);
     const randomTemp = (Math.random() * (24 - 18) + 18).toFixed(1); // Random temp between 18 and 24
-    
+
     tempElement.style.transform = 'scale(1.1)';
     tempElement.style.transition = 'transform 0.3s ease';
-    
+
     setTimeout(() => {
         tempElement.textContent = `${randomTemp}°C`;
         tempElement.style.transform = 'scale(1)';
@@ -40,7 +40,7 @@ const toggleScheduleForm = document.getElementById('toggle-schedule-form');
 
 toggleScheduleForm.addEventListener('click', () => {
     const isHidden = !scheduleForm.classList.contains('show');
-    
+
     if (isHidden) {
         scheduleForm.style.display = 'block';
         scheduleForm.offsetHeight;
@@ -68,7 +68,7 @@ addScheduleBtn.addEventListener('click', () => {
         const listItem = document.createElement('li');
         listItem.style.opacity = '0';
         listItem.style.transform = 'translateY(20px)';
-        
+
         const actionIcon = action === 'on' ? 'fa-lightbulb' : 'fa-power-off';
         listItem.innerHTML = `
             <div class="schedule-item-content">
@@ -79,9 +79,9 @@ addScheduleBtn.addEventListener('click', () => {
                 <i class="fas fa-trash"></i>
             </button>
         `;
-        
+
         scheduleItems.appendChild(listItem);
-        
+
         setTimeout(() => {
             listItem.style.opacity = '1';
             listItem.style.transform = 'translateY(0)';
@@ -89,7 +89,7 @@ addScheduleBtn.addEventListener('click', () => {
 
         scheduleTimeInput.value = '';
         scheduleActionSelect.selectedIndex = 0;
-        
+
         scheduleForm.classList.remove('show');
         setTimeout(() => {
             scheduleForm.style.display = 'none';
@@ -102,7 +102,7 @@ function removeScheduleItem(button) {
     const listItem = button.parentElement;
     listItem.style.opacity = '0';
     listItem.style.transform = 'translateX(20px)';
-    
+
     setTimeout(() => {
         listItem.remove();
     }, 300);
