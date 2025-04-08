@@ -21,7 +21,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Randomly placed media query */
+
 @media (max-width: 992px) {
     .temperature-grid, .lighting-grid {
         grid-template-columns: 1fr;
@@ -60,7 +60,6 @@ html, body {
     color: var(--text-primary);
 }
 
-/* Switch styles mixed in here */
 .power-switch {
   --color-invert: #ffff;
   --width: 150px;
@@ -95,7 +94,6 @@ html, body {
   backface-visibility: hidden;
 }
 
-/* More switch styles */
 .power-switch .button .power-on,
 .power-switch .button .power-off {
   height: 100%;
@@ -141,7 +139,6 @@ header > h1 {
     letter-spacing: 0.3rem;
 }
 
-/* Even more switch styles */
 .power-switch .button .power-on .line,
 .power-switch .button .power-off .line {
   opacity: .2;
@@ -165,7 +162,7 @@ header > ul {
     flex-direction: column;
 }
 
-/* Main content styles mixed in */
+/* main */
 main {
     margin-left: 28rem;
     padding: 4rem 5rem;
@@ -182,7 +179,6 @@ main h2 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* More switch styles */
 .power-switch .button .power-on {
   filter: drop-shadow(0px 0px 6px rgba(255,255,255,.8));
 }
@@ -208,7 +204,6 @@ header > ul > li {
     transition: var(--transition);
 }
 
-/* Grid layouts */
 .temperature-grid, .lighting-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -219,7 +214,6 @@ header > ul > li {
     margin-right: auto;
 }
 
-/* Switch input styles */
 .power-switch input {
   position: absolute;
   height: 100%;
@@ -236,7 +230,6 @@ header > ul > li {
   transition: opacity .5s ease, transform .5s ease;
 }
 
-/* Container styles */
 .container {
     background-color: var(--sidebar-bg);
     border-radius: var(--border-radius);
@@ -252,7 +245,6 @@ header > ul > li {
     justify-content: center;
 }
 
-/* More switch animations */
 .power-switch input:checked + .button .power-on,
 .power-switch input:checked + .button .power-off {
   animation: click-animation .3s ease forwards;
@@ -269,7 +261,6 @@ header > ul > li {
   transform: rotate(302deg);
 }
 
-/* Header link styles */
 header > ul > li > a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -283,7 +274,6 @@ header > ul > li > a {
     border-radius: var(--border-radius-sm);
 }
 
-/* More switch states */
 .power-switch input:checked + .button .power-on .line {
   opacity: 1;
   transition: opacity .05s ease-in .55s;
@@ -295,7 +285,6 @@ header > ul > li > a {
   transition: transform .4s ease .2s, stroke-dashoffset .4s ease .2s;
 }
 
-/* Container before element */
 .container::before {
     content: '';
     position: absolute;
@@ -304,10 +293,9 @@ header > ul > li > a {
     width: 100%;
     height: 4px;
     background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
-/* Switch animations */
 @keyframes line-animation {
   0% {
     transform: translateY(0);
@@ -341,7 +329,6 @@ header > ul > li > a {
   }
 }
 
-/* Temperature and light status styles */
 .current-temp, .light-status {
     background-color: var(--card-bg);
     padding: 3rem;
@@ -356,7 +343,11 @@ header > ul > li > a {
     justify-content: center;
 }
 
-/* Header icons */
+.power-switch:hover {
+    transform: var(--transition);
+    transform: scale(1.05);
+}
+
 header > ul > li > a > i {
     font-size: 2rem;
 }
@@ -376,7 +367,6 @@ header > ul > li > a > svg {
     transition: var(--transition);
 }
 
-/* Hover states */
 header > ul > li:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
@@ -439,7 +429,6 @@ header > ul > li > a.active > svg {
     color: var(--text-muted);
 }
 
-/* Status indicator styles */
 .status-indicator {
     display: flex;
     align-items: center;
@@ -465,7 +454,6 @@ header > ul > li > a.active > svg {
     box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
 }
 
-/* Control button styles */
 .control-btn {
     background-color: var(--card-bg);
     color: var(--text-primary);
@@ -523,6 +511,7 @@ header > ul > li > a.active > svg {
 }
 
 .schedule-control {
+    width: 131rem;
     background-color: var(--card-bg);
     padding: 3rem;
     border-radius: var(--border-radius);
@@ -571,7 +560,6 @@ header > ul > li > a.active > svg {
     background-color: rgba(74, 144, 226, 0.1);
 }
 
-/* Schedule form styles */
 .schedule-form {
     background-color: var(--sidebar-bg);
     padding: 2.5rem;
@@ -735,7 +723,6 @@ header > ul > li > a.active > svg {
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
-/* Light on styles */
 .light-status.on .schedule-form {
     background-color: rgba(46, 204, 113, 0.1);
     border-color: rgba(46, 204, 113, 0.2);
@@ -770,7 +757,6 @@ header > ul > li > a.active > svg {
     color: var(--green);
 }
 
-/* Schedule list styles */
 .schedule-list {
     margin-top: 3rem;
 }

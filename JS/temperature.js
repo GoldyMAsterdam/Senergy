@@ -1,32 +1,50 @@
+// Replace serialSimulator with actual Serial communication
+const serialSimulator = {
+  send: (command) => {
+    // Send command to Arduino
+    console.log(`Sent to Arduino: ${command}`);
+    // Replace with actual Serial write logic
+  },
+  receive: () => {
+    // Replace with actual Serial read logic
+    return "TEMP:21.5"; // Example response
+  },
+};
+
+// Update temperature display
 function updateTemperature() {
-    const tempElement = document.getElementById('room-temperature');
-    const currentTemp = parseFloat(tempElement.textContent);
-    const randomTemp = (Math.random() * (24 - 18) + 18).toFixed(1); // Random temp between 18 and 24
-
-    tempElement.style.transform = 'scale(1.1)';
-    tempElement.style.transition = 'transform 0.3s ease';
-
-    setTimeout(() => {
-        tempElement.textContent = `${randomTemp}°C`;
-        tempElement.style.transform = 'scale(1)';
-    }, 150);
+  const tempElement = document.getElementById('room-temperature');
+  const response = serialSimulator.receive(); // Replace with actual Serial communication
+  if (response.startsWith('TEMP:')) {
+    const temperature = response.split(':')[1];
+    tempElement.textContent = `${temperature}°C`;
+  }
 }
 
+// Control light
+const lightToggle = document.getElementById('light-toggle');
+lightToggle.addEventListener('change', function () {
+  if (this.checked) {
+    serialSimulator.send('LIGHT_ON'); // Replace with actual Serial communication
+    document.getElementById('light-status-text').textContent = 'Turned On';
+  } else {
+    serialSimulator.send('LIGHT_OFF'); // Replace with actual Serial communication
+    document.getElementById('light-status-text').textContent = 'Turned Off';
+  }
+});
+
+// Periodically update temperature
 setInterval(updateTemperature, 5000);
 
-const lightToggle = document.getElementById('light-toggle');
 const lightStatusDot = document.getElementById('light-status-dot');
-const lightStatusText = document.getElementById('light-status-text');
 const lightStatus = document.querySelector('.light-status');
 
 lightToggle.addEventListener('change', function() {
     if (this.checked) {
         lightStatusDot.classList.add('on');
-        lightStatusText.textContent = 'Turned On';
         lightStatus.classList.add('on');
     } else {
         lightStatusDot.classList.remove('on');
-        lightStatusText.textContent = 'Turned Off';
         lightStatus.classList.remove('on');
     }
 });

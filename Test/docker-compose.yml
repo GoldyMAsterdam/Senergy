@@ -2,10 +2,10 @@ services:
     php:
       image: wodby/php:latest
       container_name: php
-      volumes: 
+      volumes:
         - './:/var/www/html'
 
-    nginx: 
+    nginx:
       image: nginx:latest
       container_name: nginx
       ports:
