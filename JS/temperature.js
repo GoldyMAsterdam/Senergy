@@ -1,34 +1,16 @@
-// Replace serialSimulator with actual Serial communication
-const serialSimulator = {
-  send: (command) => {
-    // Send command to Arduino
-    console.log(`Sent to Arduino: ${command}`);
-    // Replace with actual Serial write logic
-  },
-  receive: () => {
-    // Replace with actual Serial read logic
-    return "TEMP:21.5"; // Example response
-  },
-};
-
-// Update temperature display
 function updateTemperature() {
   const tempElement = document.getElementById('room-temperature');
-  const response = serialSimulator.receive(); // Replace with actual Serial communication
-  if (response.startsWith('TEMP:')) {
-    const temperature = response.split(':')[1];
-    tempElement.textContent = `${temperature}°C`;
-  }
+  // Simulate temperature update
+  const simulatedTemperature = "22.5";
+  tempElement.textContent = `${simulatedTemperature}°C`;
 }
 
 // Control light
 const lightToggle = document.getElementById('light-toggle');
 lightToggle.addEventListener('change', function () {
   if (this.checked) {
-    serialSimulator.send('LIGHT_ON'); // Replace with actual Serial communication
     document.getElementById('light-status-text').textContent = 'Turned On';
   } else {
-    serialSimulator.send('LIGHT_OFF'); // Replace with actual Serial communication
     document.getElementById('light-status-text').textContent = 'Turned Off';
   }
 });
