@@ -25,13 +25,13 @@ timezoneSelect.addEventListener('change', (e) => {
 function updateCurrentTime(timezone) {
     const timeElement = document.getElementById('current-time');
     const now = new Date();
-    const options = { 
+    const options = {
         timeZone: timezone,
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
     };
-    
+
     timeElement.textContent = now.toLocaleTimeString('en-US', options);
 }
 
@@ -40,7 +40,7 @@ function initializeSettings() {
     themeSelect.value = savedTheme;
     document.body.setAttribute('data-theme', savedTheme);
 
-    
+
     const savedLanguage = localStorage.getItem('language') || 'en';
     languageSelect.value = savedLanguage;
 
@@ -49,5 +49,4 @@ function initializeSettings() {
     updateCurrentTime(savedTimezone);
 }
 
-// Call initialization when the page loads
-document.addEventListener('DOMContentLoaded', initializeSettings); 
+document.addEventListener('DOMContentLoaded', initializeSettings);
