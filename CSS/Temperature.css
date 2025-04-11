@@ -292,8 +292,16 @@ header > ul > li > a {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-    opacity: 0.6;
+    background: linear-gradient(var(--accent));
+    opacity: 1;
+}
+
+.container:nth-child(2)::before {
+    background: linear-gradient(var(--green));
+}
+
+.schedule-control::before {
+    background: linear-gradient(var(--orange));
 }
 
 @keyframes line-animation {
@@ -330,14 +338,14 @@ header > ul > li > a {
 }
 
 .current-temp, .light-status {
-    background-color: var(--card-bg);
+    background-color: var(--sidebar-bg);
     padding: 3rem;
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 5px solid rgba(255, 255, 255, 0.05);
     position: relative;
     height: 100%;
     justify-content: center;
@@ -395,7 +403,6 @@ header > ul > li > a.active > svg {
     fill: var(--text-primary);
 }
 
-/* Status indicators */
 .current-temp i, .light-status i {
     font-size: 3.2rem;
     margin-bottom: 1.5rem;
